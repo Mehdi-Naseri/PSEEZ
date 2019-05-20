@@ -1,0 +1,31 @@
+﻿@*<div>.1 Cost management plan</div>*@
+
+@model Pseez.ViewModels.ViewModels.PseezEnt.Pmbok.ProjectDocumentLatestValueFilesViewModel
+<div class="panel-group" @*id="accordion"*@ role="tablist" aria-multiselectable="true">
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="heading-o1">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-o1">
+                    1. Cost management plan
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-o1" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+                <div class="meh-documentGroup">
+                    <div class="form-group">
+                        @Html.TextAreaFor(model => model.CostManagementPlan)
+                    </div>
+                    <div class="form-group meh-kendouiUpload">
+                        @foreach (var file in Model.CostManagementPlanFiles)
+                        {
+                            <div class="meh-documentFile">
+                                @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

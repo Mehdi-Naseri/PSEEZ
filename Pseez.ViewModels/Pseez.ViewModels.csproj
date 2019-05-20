@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CF0583F2-70D2-4286-8149-5387CF9ACB17}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pseez.ViewModels</RootNamespace>
+    <AssemblyName>Pseez.ViewModels</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\PseezEnt\Cmms\RepairRequestViewModel.cs" />
+    <Compile Include="ViewModels\PseezEnt\Cmms\RequestPlanningViewModel.cs" />
+    <Compile Include="ViewModels\PseezEnt\Cmms\RequestTechnitionViewModel.cs" />
+    <Compile Include="ViewModels\PseezEnt\Cmms\RequestUserViewModel.cs" />
+    <Compile Include="ViewModels\PseezEnt\Common\ContactGroupViewModel.cs" />
+    <Compile Include="ViewModels\PseezEnt\Common\ContactListViewModel.cs" />
+    <Compile Include="ViewModels\PseezEnt\Common\ContactViewModel.cs" />
+    <Compile Include="ViewModels\PseezEnt\Common\UserContactListViewModel.cs" />
+    <Compile Include="ViewModels\PseezEnt\Common\UserDefaultContactListViewModel.cs" />
+    <Compile Include="ViewModels\PseezEnt\IT\ActiveDirectoryComputerViewModel.cs" />
+    <Compile Include="ViewModels\PseezEnt\IT\ActiveDirectoryUserViewModel.cs" />
+    <Compile Include="ViewModels\PseezEnt\IT\BackupViewModel.cs" />
+    <Compile Include="ViewModels\PseezEnt\IT\ServerViewModel.cs" />
+    <Compile Include="ViewModels\PseezEnt\HumanResource\EmployeesDetailViewModel.cs" />
+    <Compile Include="ViewModels\PseezEnt\HumanResource\FlightListViewModel.cs" />
+    <Compile Include="ViewModels\PseezEnt\HumanResource\FlightPassengerViewModel.cs" />
+    <Compile Include="ViewModels\PseezEnt\Pmbok\ProjectDocumentFileDeletedViewModel.cs" />
+    <Compile Include="ViewModels\PseezEnt\Pmbok\ProjectDocumentFileViewModel.cs" />
+    <Compile Include="ViewModels\PseezEnt\Pmbok\ProjectDocumentLatestValueFilesViewModel.cs" />
+    <Compile Include="ViewModels\PseezEnt\Pmbok\ProjectDocumentLatestValueViewModel.cs" />
+    <Compile Include="ViewModels\PseezEnt\Pmbok\ProjectDocumentValueViewModel.cs" />
+    <Compile Include="ViewModels\PseezEnt\Pmbok\ProjectViewModel.cs" />
+    <Compile Include="ViewModels\PseezEnt\VisitRegistration\RegistrationViewModel.cs" />
+    <Compile Include="ViewModels\Sts\Basic\City.cs" />
+    <Compile Include="ViewModels\Sts\Basic\Gender.cs" />
+    <Compile Include="ViewModels\Sts\Basic\Person.cs" />
+    <Compile Include="ViewModels\Sts\Basic\Province.cs" />
+    <Compile Include="ViewModels\Sts\Journey\Provider.cs" />
+    <Compile Include="ViewModels\Sts\Journey\ReservationPersonList.cs" />
+    <Compile Include="ViewModels\Sts\Journey\TimeTable.cs" />
+    <Compile Include="ViewModels\Sts\Staff\BloodType.cs" />
+    <Compile Include="ViewModels\Sts\Staff\DegreeState.cs" />
+    <Compile Include="ViewModels\Sts\Staff\Employee.cs" />
+    <Compile Include="ViewModels\Sts\Staff\EmployeeAcademicalResume.cs" />
+    <Compile Include="ViewModels\Sts\Staff\EmployeeFamilialType.cs" />
+    <Compile Include="ViewModels\Sts\Staff\EmployeeOrganChart.cs" />
+    <Compile Include="ViewModels\Sts\Staff\FamilialType.cs" />
+    <Compile Include="ViewModels\Sts\Staff\OrganChart.cs" />
+    <Compile Include="ViewModels\Sts\Staff\Religion.cs" />
+    <Compile Include="ViewModels\Sts\Staff\Unit.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\PseezEnt\Tools\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Pseez.DomainClasses\Pseez.DomainClasses.csproj">
+      <Project>{92a6e8d6-4067-4cc4-a5ef-a1b142b8dc96}</Project>
+      <Name>Pseez.DomainClasses</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

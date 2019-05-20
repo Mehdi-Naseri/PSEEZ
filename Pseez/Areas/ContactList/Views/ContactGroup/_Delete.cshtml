@@ -1,0 +1,49 @@
+﻿@model Pseez.Model.ViewModels.PseezEnt.Contact.ContactGroupViewModel
+
+<div class="modal-header alert-danger">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove closePanel"></span></button>
+    <h3 class="modal-title">حذف گروه شماره تماس</h3>
+</div>
+
+
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(m => Model.Name, new { @class = "control-label col-sm-3" })
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => Model.Description, new { @class = "control-label col-sm-3" })
+            <div class="col-sm-9">
+                @Html.TextAreaFor(m => m.Description, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => Model.ContactListName, new { @class = "control-label col-sm-3" })
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.ContactListName, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+                <h3>
+                    <span class="label label-danger">
+                        آیا مایلید این مورد حذف گردد؟
+                    </span>
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <input class="btn btn-danger" type="submit" value="بله" />
+        <button class="btn btn-primary" data-dismiss="modal">خیر</button>
+    }
+</div>

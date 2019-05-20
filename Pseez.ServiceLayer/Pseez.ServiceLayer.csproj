@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{45884A07-5388-409C-9438-FBC9F218398D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pseez.ServiceLayer</RootNamespace>
+    <AssemblyName>Pseez.ServiceLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EFServices\PseezEnt\Cmms\EfRepairRequestService.cs" />
+    <Compile Include="EFServices\PseezEnt\Common\EfContactGroupService.cs" />
+    <Compile Include="EFServices\PseezEnt\IT\EfBackupService.cs" />
+    <Compile Include="EFServices\PseezEnt\IT\EfServerService.cs" />
+    <Compile Include="EFServices\PseezEnt\HumanResource\EfFlightPassengersService.cs" />
+    <Compile Include="EFServices\PseezEnt\HumanResource\EfFlightsService.cs" />
+    <Compile Include="EFServices\PseezEnt\HumanResource\EfEmployeeDetailService.cs" />
+    <Compile Include="EFServices\PseezEnt\Common\EfUserDefaultContactListService.cs" />
+    <Compile Include="EFServices\PseezEnt\Common\EfContactListService.cs" />
+    <Compile Include="EFServices\PseezEnt\Common\EfUserContactListService.cs" />
+    <Compile Include="EFServices\PseezEnt\Common\EfContactService.cs" />
+    <Compile Include="EFServices\PseezEnt\Pmbok\EfProjectDocumentFileDeletedService.cs" />
+    <Compile Include="EFServices\PseezEnt\Pmbok\EfProjectDocumentFileService.cs" />
+    <Compile Include="EFServices\PseezEnt\Pmbok\EfProjectDocumentService.cs" />
+    <Compile Include="EFServices\PseezEnt\Pmbok\EfProjectDocumentValueFilesService.cs" />
+    <Compile Include="EFServices\PseezEnt\Pmbok\EfProjectDocumentValueService.cs" />
+    <Compile Include="EFServices\PseezEnt\Pmbok\EfProjectService.cs" />
+    <Compile Include="EFServices\PseezEnt\VisitRegistration\EfRegistrationService.cs" />
+    <Compile Include="EFServices\Sts\Basic\EfCityService.cs" />
+    <Compile Include="EFServices\Sts\Basic\EfGenderService.cs" />
+    <Compile Include="EFServices\Sts\Basic\EfPersonService.cs" />
+    <Compile Include="EFServices\Sts\Basic\EfProvinceService.cs" />
+    <Compile Include="EFServices\Sts\Journey\EfProviderService.cs" />
+    <Compile Include="EFServices\Sts\Journey\EfTimeTableService.cs" />
+    <Compile Include="EFServices\Sts\Journey\EfReservationPersonListService.cs" />
+    <Compile Include="EFServices\Sts\Staff\EfDegreeStateService.cs" />
+    <Compile Include="EFServices\Sts\Staff\EfEmployeeAcademicalResumeService.cs" />
+    <Compile Include="EFServices\Sts\Staff\EfEmployeeFamilialTypeService.cs" />
+    <Compile Include="EFServices\Sts\Staff\EfEmployeeOrganChartService.cs" />
+    <Compile Include="EFServices\Sts\Staff\EfEmployeeService.cs" />
+    <Compile Include="EFServices\Sts\Staff\EfFamilialTypeService.cs" />
+    <Compile Include="EFServices\Sts\Staff\EfOrganChartService.cs" />
+    <Compile Include="EFServices\Sts\Staff\EfReligionService.cs" />
+    <Compile Include="EFServices\Sts\Staff\EfUnitService.cs" />
+    <Compile Include="EFServices\Sts\Staff\EfBloodTypeService.cs" />
+    <Compile Include="EFServices\PseezEnt\_EfGenericService.cs" />
+    <Compile Include="EFServices\Sts\_EfGenericService.cs" />
+    <Compile Include="Interfaces\PseezEnt\Cmms\IRepairRequestService.cs" />
+    <Compile Include="Interfaces\PseezEnt\Common\IContactGroupService.cs" />
+    <Compile Include="Interfaces\PseezEnt\HumanResource\IFlightPassengersService.cs" />
+    <Compile Include="Interfaces\PseezEnt\HumanResource\IFlightsService.cs" />
+    <Compile Include="Interfaces\PseezEnt\HumanResource\IEmployeeDetailService.cs" />
+    <Compile Include="Interfaces\PseezEnt\Common\IUserDefaultContactList.cs" />
+    <Compile Include="Interfaces\PseezEnt\Common\IContactListService.cs" />
+    <Compile Include="Interfaces\PseezEnt\Common\IUserContactListService.cs" />
+    <Compile Include="Interfaces\PseezEnt\Common\IContactService.cs" />
+    <Compile Include="Interfaces\PseezEnt\Pmbok\IProjectDocumentFileDeletedService.cs" />
+    <Compile Include="Interfaces\PseezEnt\Pmbok\IProjectDocumentFileService.cs" />
+    <Compile Include="Interfaces\PseezEnt\Pmbok\IProjectDocumentService.cs" />
+    <Compile Include="Interfaces\PseezEnt\Pmbok\IProjectDocumentValueFilesService.cs" />
+    <Compile Include="Interfaces\PseezEnt\Pmbok\IProjectDocumentValueService.cs" />
+    <Compile Include="Interfaces\PseezEnt\Pmbok\IProjectService.cs" />
+    <Compile Include="Interfaces\PseezEnt\VisitRegistration\IRegistrationService.cs" />
+    <Compile Include="Interfaces\PseezEnt\_IGenericService.cs" />
+    <Compile Include="Interfaces\PseezEnt\IT\IBackupService.cs" />
+    <Compile Include="Interfaces\PseezEnt\IT\IServerService.cs" />
+    <Compile Include="Interfaces\Sts\Basic\ICityService.cs" />
+    <Compile Include="Interfaces\Sts\Basic\IGenderService.cs" />
+    <Compile Include="Interfaces\Sts\Basic\IPersonService.cs" />
+    <Compile Include="Interfaces\Sts\Basic\IProvinceService.cs" />
+    <Compile Include="Interfaces\Sts\Journey\ITimeTableService.cs" />
+    <Compile Include="Interfaces\Sts\Journey\IReservationPersonListService.cs" />
+    <Compile Include="Interfaces\Sts\Journey\IProviderService.cs" />
+    <Compile Include="Interfaces\Sts\Staff\IBloodTypeService.cs" />
+    <Compile Include="Interfaces\Sts\Staff\IDegreeStateService.cs" />
+    <Compile Include="Interfaces\Sts\Staff\IEmployeeAcademicalResumeService.cs" />
+    <Compile Include="Interfaces\Sts\Staff\IEmployeeFamilialTypeService.cs" />
+    <Compile Include="Interfaces\Sts\Staff\IEmployeeOrganChartService.cs" />
+    <Compile Include="Interfaces\Sts\Staff\IFamilialTypeService.cs" />
+    <Compile Include="Interfaces\Sts\Staff\IOrganChartService.cs" />
+    <Compile Include="Interfaces\Sts\Staff\IReligionService.cs" />
+    <Compile Include="Interfaces\Sts\Staff\IUnitService.cs" />
+    <Compile Include="Interfaces\Sts\Staff\IEmployeeService.cs" />
+    <Compile Include="Interfaces\Sts\_IGenericService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Identity.ServiceLayer\Identity.ServiceLayer.csproj">
+      <Project>{541f269f-c5d9-41f0-827d-4ae661a14341}</Project>
+      <Name>Identity.ServiceLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pseez.DataAccessLayer\Pseez.DataAccessLayer.csproj">
+      <Project>{7ed6f3d2-2232-45c1-8da0-eeeebd367e43}</Project>
+      <Name>Pseez.DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pseez.DomainClasses\Pseez.DomainClasses.csproj">
+      <Project>{92a6e8d6-4067-4cc4-a5ef-a1b142b8dc96}</Project>
+      <Name>Pseez.DomainClasses</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pseez.ViewModels\Pseez.ViewModels.csproj">
+      <Project>{cf0583f2-70d2-4286-8149-5387cf9acb17}</Project>
+      <Name>Pseez.ViewModels</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EFServices\PseezEnt\Tools\" />
+    <Folder Include="Interfaces\PseezEnt\Tools\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,87 @@
+﻿@model Pseez.ViewModels.ViewModels.PseezEnt.Cmms.RequestPlanningViewModel
+
+<div class="modal-header alert-info">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        <span class="glyphicon glyphicon-remove"></span>
+    </button>
+    <h3 class="modal-title">مشخصات درخواست</h3>
+</div>
+
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(m => Model.RequestByName, new { @class = "control-label col-sm-3" })
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.RequestByName, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => Model.RequestById, new { @class = "control-label col-sm-3" })
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.RequestById, new { @class = "form-control col-sm-6", @disabled = "disabled", dir = "ltr" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => Model.RequestDate, new { @class = "control-label col-sm-3" })
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.RequestDate, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => Model.MainSite, new {@class = "control-label col-sm-3"})
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.MainSite, new {@class = "form-control", @disabled = "disabled"})
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => Model.SiteSecondary, new {@class = "control-label col-sm-3"})
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.SiteSecondary, new {@class = "form-control", @disabled = "disabled"})
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => Model.RequestType, new { @class = "control-label col-sm-3" })
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.RequestType, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => Model.Description, new {@class = "control-label col-sm-3"})
+            <div class="col-sm-9">
+                @Html.TextAreaFor(m => m.Description, new {@class = "form-control", @disabled = "disabled", rows = "5"})
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(m => Model.TaskType, new {@class = "control-label col-sm-3"})
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.TaskType, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => Model.Supervisor, new {@class = "control-label col-sm-3"})
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.Supervisor, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => Model.SeniorSupervisor, new {@class = "control-label col-sm-3"})
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.SeniorSupervisor, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => Model.MaxDurationTime, new { @class = "control-label col-sm-3" })
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.MaxDurationTime, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-warning" data-dismiss="modal">بستن</button>
+</div>

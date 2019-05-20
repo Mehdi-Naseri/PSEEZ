@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Create Role";
+}
+
+
+<div class="modal-header alert-info">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+    <h3 class="modal-title">@ViewBag.Title</h3>
+</div>
+
+@using (Html.BeginForm())
+{         
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="form-group Meh-required">
+                @Html.Label("RoleName", "Role Name", new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBox("RoleName", null, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <span id="progress" class="text-center" style="display: none;">
+            <img src="~/Content/Meh/Images/wait.gif" alt="wait" />
+            Sending ...
+        </span>
+
+        <input class="btn btn-primary" type="submit" value="Save" />
+        <button class="btn btn-warning" data-dismiss="modal">Close</button>
+    </div>
+}
+
+

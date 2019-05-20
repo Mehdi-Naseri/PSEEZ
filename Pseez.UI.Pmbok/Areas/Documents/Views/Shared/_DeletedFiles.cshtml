@@ -1,0 +1,8 @@
+﻿@model IEnumerable<Pseez.ViewModels.ViewModels.PseezEnt.Pmbok.ProjectDocumentFileDeletedViewModel>
+
+@foreach (var file in Model)
+{
+    <div class="meh-documentFile">
+        @Html.ActionLink(file.FileName, "DownloadDocumentFileDeleted", new { id = file.Id }, null)
+    </div>
+}

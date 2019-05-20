@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Pseez.ViewModels.ViewModels.PseezEnt.Pmbok.ProjectDocumentValueViewModel>
+
+@foreach (var item in Model)
+{
+    <hr />
+    <dl class="dl-horizontal">
+        @*Created By: @item.CreatedBy*@
+        <dt>
+            Date/Time:
+        </dt>
+        <dd>
+            @item.Datetime
+        </dd>
+        <dt>
+            Value:
+        </dt>
+        <dd>
+            @item.Value
+        </dd>
+    </dl>
+    }

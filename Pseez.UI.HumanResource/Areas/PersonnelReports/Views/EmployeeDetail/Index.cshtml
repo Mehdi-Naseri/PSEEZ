@@ -1,0 +1,162 @@
+﻿@{
+    ViewBag.Title = "کارمندان";
+}
+<h2>کارمندان</h2>
+
+<div class="row " style="margin-left: 8px; margin-right: 8px;">
+    <div class="pull-right">
+        <div class="checkbox" style="display: inline-block">
+            <label class="control-label">
+                <input id="ShowAllEmployee" type="checkbox" style="float:right;margin-right:auto;margin-left:-20px"/>
+                نمایش همه کارمندان
+            </label>
+        </div>
+        @Html.TextBox("numberofReturnedEmployee", 10, new {@class = "form-control", type = "number", min = "0", style = "width:100px;display:inline-block"})
+        <button id="buttonShowGrid" class="btn btn-primary">نمایش</button>
+
+    </div>
+    @*<div class="pull-left">
+        @(Html.Raw(Html.ActionLink("[Replace]" + "خروجی CSV", "ExportCSV", "EmployeeDetail ", new { @class = "btn btn-success", style = "border-color: #28a338;padding-top:0px;padding-bottom:0px;padding-right:0px;" }).
+                        ToHtmlString().Replace("[Replace]", "<img src=\"/Content/Meh/Images/CSV.png\" style=\"height: 38px;\" />")))
+        <img src="~/Files/Images/Images/excel.png" />
+        @(Html.Raw(Html.ActionLink("[Replace]" + "خروجی اکسل", "ExportExcel", "EmployeeDetail ", new { @class = "btn btn-success", style = "border-color: #28a338;padding-top:0px;padding-bottom:0px;padding-right:0px;" }).
+                        ToHtmlString().Replace("[Replace]", "<img src=\"/Content/Meh/Images/excel.png\" style=\"height: 38px;\" />")))
+    </div>*@
+</div>
+<div class="k-rtl">
+    <div id="grid"></div>
+</div>
+
+@section Styles{
+    <link href="~/Content/kendo/2015.1.318/kendo.common.min.css" rel="stylesheet"/>
+    <link href="~/Content/kendo/2015.1.318/kendo.blueopal.min.css" rel="stylesheet"/>
+    <link href="~/Content/kendo/2015.1.318/kendo.rtl.min.css" rel="stylesheet"/>
+}
+@section Scripts{
+    <script src="~/Scripts/jszip/jszip.min-2.5.0.js"></script>
+    <script src="~/Scripts/kendo/2015.1.318_Complete/kendo.all.min.js"></script>
+    <script src="~/Scripts/kendo/KendoFarsi/kendo.fa-IR.js"></script>
+
+    <script>
+        kendo.culture("fa-IR");
+    </script>
+    <script>
+        function ShowGrid() {
+            var GridDataSource = new kendo.data.DataSource({
+                type: "json",
+                transport: {
+                    read: {
+                        url: "@Url.Action("Read")" + "?boolShowAllEmployee=" + $("#ShowAllEmployee").prop('checked') + "&numberofReturnedEmployee=" + $("#numberofReturnedEmployee").val(),
+                        dataType: "json",
+                        type: "GET",
+                        contentType: "application/json; charset=utf-8",
+                    },
+                    //parameterMap: function (options) {
+                    //    return JSON.stringify(options);
+                    //}
+                },
+                schema: {
+                    model: {
+                        id: "Id",
+                        fields: {
+                            Id: { type: "number", editable: false },
+                            Name: { type: "string" },
+                            Family: { type: "string" },
+                            FatherName: { type: "string" },
+                            BirthDate: { type: "string" },
+                            City: { type: "string" },
+                            Province: { type: "string" },
+                            Shenasnameh: { type: "string" },
+                            NationalCode: { type: "string" },
+                            Gender: { type: "string" },
+                            PersoneliCode: { type: "string" },
+                            EmploymentDate: { type: "string" },
+                            Religion: { type: "string" },
+                            BloodType: { type: "string" },
+                            MartialStatus: { type: "string" },
+                            MartialDate: { type: "string" },
+                            DegreeState: { type: "string" },
+                            Unit: { type: "string" }
+                        }
+                    }
+                },
+                error: function(e) {
+                    alert(e.errorThrown);
+                },
+                pageSize: 10
+            });
+
+            $("#grid").kendoGrid({
+                dataSource: GridDataSource,
+                autoBind: true,
+                selectable: "row",
+                navigatable: true,
+                //height: 430,
+                groupable: true,
+                scrollable: true,
+                sortable: true,
+                filterable: true,
+                resizable: true,
+                reorderable: true,
+                pageable: {
+                    refresh: true,
+                    pageSizes: true,
+                    input: true,
+                    numeric: false
+                },
+                toolbar: [
+//{ name: "Create", template: "<a class='k-grid-Create' data-modal=''><span class='btn btn-success'><span class='glyphicon glyphicon-plus'></span> سرور جدید </span></a>" },
+                    { name: "excel", template: "<a class='k-grid-excel' style='margin-right:3px;float:left' ><span class='btn btn-success'><span class='k-icon k-i-excel'></span> خروجی اکسل </span></a>" }
+                ],
+                columns: [
+                    { field: "Id", title: "کد", width: "70px" },
+                    { field: "Name", title: "نام" },
+                    { field: "Family", title: "نام خانوادگی" },
+                    { field: "FatherName", title: "نام پدر" },
+                    { field: "BirthDate", title: "تاریخ تولد" },
+                    { field: "City", title: "شهر" },
+                    { field: "Province", title: "استان" },
+                    { field: "Shenasnameh", title: "شماره شناسنامه" },
+                    { field: "NationalCode", title: "شماره ملی" },
+                    { field: "Gender", title: "جنسیت" },
+                    { field: "Mobile", title: "موبايل" },
+                    { field: "PersoneliCode", title: "كد پرسنلی" },
+                    { field: "EmploymentDate", title: "تاريخ استخدام" },
+                    { field: "Religion", title: "دین" },
+                    { field: "Email", title: "ايميل" },
+                    { field: "BloodType", title: "گروه خونی" },
+                    { field: "MartialStatus", title: "تاهل" },
+                    { field: "MartialDate", title: "تاريخ ازدواج" },
+                    { field: "DegreeState", title: "مدرک دانشگاهی" },
+                    { field: "Unit", title: "واحد" }
+                ],
+                excel: {
+                    allPages: true
+                },
+            });
+        };
+
+
+        $(document).ready(function() {
+            ShowGrid();
+            $("#buttonShowGrid").click(function () {
+                //ShowGrid();
+                var grid = $("#grid").data("kendoGrid");
+                grid.dataSource.transport.options.read.url = "@Url.Action("Read")" + "?boolShowAllEmployee=" + $("#ShowAllEmployee").prop('checked') + "&numberofReturnedEmployee=" + $("#numberofReturnedEmployee").val();
+                grid.dataSource.read();
+            });
+            //ShowGrid();
+            //$("#ShowAllEmployee").on("change", function () {
+            //    alert("Test2");
+            //    ShowGrid();
+            //});
+            $("#ShowAllEmployee").click(function() {
+                if ($("#ShowAllEmployee").prop('checked'))
+                    $("#numberofReturnedEmployee").attr("disabled", "disabled");
+                else
+                    $("#numberofReturnedEmployee").removeAttr("disabled");
+            });
+
+        });
+    </script>
+}

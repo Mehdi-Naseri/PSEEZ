@@ -1,0 +1,137 @@
+﻿@*<div>.1 Change requests</div>
+<div>.2 Project management plan updates</div>
+<div>.3 Project documents updates</div>
+<div>.4 Enterprise environmental factors updates</div>
+<div>.5 Organizational process assets updates</div>*@
+
+@model Pseez.ViewModels.ViewModels.PseezEnt.Pmbok.ProjectDocumentLatestValueFilesViewModel
+<div class="panel-group" @*id="accordion"*@ role="tablist" aria-multiselectable="true">
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="heading-o1">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-o1">
+                    1. Change requests
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-o1" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+                <div class="meh-documentGroup">
+                    <div class="form-group">
+                        @Html.TextAreaFor(model => model.ChangeRequests)
+                    </div>
+                    <div class="form-group meh-kendouiUpload">
+                        @foreach (var file in Model.ChangeRequestsFiles)
+                        {
+                            <div class="meh-documentFile">
+                                @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="heading-o2">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-o2">
+                    2. Project management plan updates
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-o2" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+                @Html.ActionLink("Project Management Plans", "Index", "ProjectManagementPlans", new { area = "Documents" }, null)
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="heading-o3">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-o3">
+                    3. Project documents updates
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-o3" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+                @Html.ActionLink("Project Documents", "Index", "ProjectDocuments", new { area = "Documents" }, null)
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="heading-04">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-o4">
+                    4. Enterprise environmental factors updates
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-o4" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+                <div class="meh-documentGroup">
+                    <div class="form-group">
+                        @Html.TextAreaFor(model => model.EnterpriseEnvironmentalFactors)
+                    </div>
+                    <div class="form-group meh-kendouiUpload">
+                        @foreach (var file in Model.EnterpriseEnvironmentalFactorsFiles)
+                        {
+                            <div class="meh-documentFile">
+                                @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="heading-05">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-o5">
+                    5. Organizational process assets updates
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-o5" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.Label("Processes & Procedures")
+                    <div class="meh-documentGroup">
+                        <div class="form-group">
+                            @Html.TextAreaFor(model => model.ProcessesAndProcedures)
+                        </div>
+                        <div class="form-group meh-kendouiUpload">
+                            @foreach (var file in Model.ProcessesAndProceduresFiles)
+                            {
+                                <div class="meh-documentFile">
+                                    @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                <div class="form-group">
+                    @Html.Label("Corporate Knowledge Base")
+                    <div class="meh-documentGroup">
+                        <div class="form-group">
+                            @Html.TextAreaFor(model => model.CorporateKnowledgeBase)
+                        </div>
+                        <div class="form-group meh-kendouiUpload">
+                            @foreach (var file in Model.CorporateKnowledgeBaseFiles)
+                            {
+                                <div class="meh-documentFile">
+                                    @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

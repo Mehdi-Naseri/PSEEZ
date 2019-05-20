@@ -1,0 +1,44 @@
+﻿@model Pseez.Model.ViewModels.PseezEnt.Contact.ContactListViewModel
+
+<div class="modal-header alert-info">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove closePanel"></span></button>
+    <h3 class="modal-title">ثبت دفترچه تلفن
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="modal-body">
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, new { @class = "control-label col-sm-3" })
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name)
+                    @Html.ValidationMessage("DuplicateRecord")
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, new { @class = "control-label col-sm-3" })
+                <div class="col-sm-9">
+                    @Html.TextAreaFor(model => model.Description, new  { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Description)
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-footer">
+        <span id="progress" class="text-center" style="display: none;">
+            <img src="~/Content/Meh/Images/wait.gif" alt="wait" />
+            در حال ارسال ...
+        </span>
+
+        <input class="btn btn-primary" type="submit" value="ذخیره" />
+        <button class="btn btn-warning" data-dismiss="modal">بستن</button>
+    </div>
+}
+

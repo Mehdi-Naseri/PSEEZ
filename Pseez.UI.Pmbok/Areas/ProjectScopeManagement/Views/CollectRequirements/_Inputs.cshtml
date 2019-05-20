@@ -1,0 +1,144 @@
+﻿@*<div>.1 Scope management plan</div>
+<div>.2 Requirements management plan</div>
+<div>.3 Stakeholder management plan</div>
+<div>.4 Project charter</div>
+<div>.5 Stakeholder register</div>*@
+
+@model Pseez.ViewModels.ViewModels.PseezEnt.Pmbok.ProjectDocumentLatestValueFilesViewModel
+<div class="panel-group" @*id="accordion"*@ role="tablist" aria-multiselectable="true">
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="heading1">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                    1. Scope management plan
+                </a>
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
+            <div class="panel-body">
+                <div class="meh-documentGroup">
+                    <div class="form-group">
+                        @Html.TextAreaFor(model => model.ScopeManagementPlan)
+                    </div>
+                    <div class="form-group">
+                        @foreach (var file in Model.ScopeManagementPlanFiles)
+                        {
+                            <div class="meh-documentFile">
+                                @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="heading2">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                    2. Requirements management plan
+                </a>
+            </h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+            <div class="panel-body">
+                <div class="meh-documentGroup">
+                    <div class="form-group">
+                        @Html.TextAreaFor(model => model.RequirementsManagementPlan)
+                    </div>
+                    <div class="form-group">
+                        @foreach (var file in Model.RequirementsManagementPlanFiles)
+                        {
+                            <div class="meh-documentFile">
+                                @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="heading3">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="true" aria-controls="collapse3">
+                    3. Stakeholder management plan
+                </a>
+            </h4>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+            <div class="panel-body">
+                <div class="meh-documentGroup">
+                    <div class="form-group">
+                        @Html.TextAreaFor(model => model.StakeholderManagementPlan)
+                    </div>
+                    <div class="form-group">
+                        @foreach (var file in Model.StakeholderManagementPlanFiles)
+                        {
+                            <div class="meh-documentFile">
+                                @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="heading4">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="true" aria-controls="collapse4">
+                    4. Project charter
+                </a>
+            </h4>
+        </div>
+        <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+            <div class="panel-body">
+                <div class="meh-documentGroup">
+                    <div class="form-group">
+                        @Html.TextAreaFor(model => model.ProjectCharter)
+                    </div>
+                    <div class="form-group">
+                        @foreach (var file in Model.ProjectCharterFiles)
+                        {
+                            <div class="meh-documentFile">
+                                @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="heading5">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="true" aria-controls="collapse5">
+                    5. Stakeholder register
+                </a>
+            </h4>
+        </div>
+        <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+            <div class="panel-body">
+                <div class="meh-documentGroup">
+                    <div class="form-group">
+                        @Html.TextAreaFor(model => model.StakeholderRegister)
+                    </div>
+                    <div class="form-group">
+                        @foreach (var file in Model.StakeholderRegisterFiles)
+                        {
+                            <div class="meh-documentFile">
+                                @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+ </div>

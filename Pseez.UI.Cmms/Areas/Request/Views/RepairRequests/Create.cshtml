@@ -1,0 +1,73 @@
+﻿@model Pseez.ViewModels.ViewModels.PseezEnt.Cmms.RequestUserViewModel
+
+@{
+    ViewBag.Title = "درخواست تعمیرات";
+}
+
+<h2>درخواست تعمیرات</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>@*RepairRequest*@</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group Meh-required">
+            @Html.LabelFor(model => model.RequestByName, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.RequestByName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RequestByName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group Meh-required">
+            @Html.LabelFor(model => model.MainSite, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.DropDownListFor(model => model.MainSite, ViewBag.MainSiteList as SelectList, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MainSite, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+       <div class="form-group Meh-required">
+            @Html.LabelFor(model => model.SiteSecondary, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.SiteSecondary, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SiteSecondary, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group Meh-required">
+            @Html.LabelFor(model => model.RequestType, htmlAttributes: new {@class = "control-label col-md-3"})
+            <div class="col-md-9">
+                @Html.DropDownListFor(model => model.RequestType, ViewBag.RequestTypeList as SelectList, new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.RequestType, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group Meh-required">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-3" })
+            @*@Html.Label("Company Address", htmlAttributes: new { @class = "control-label col-md-3" })*@
+            <div class="col-md-9">
+                @*@Html.EditorFor(model => model.CompanyAddress, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control col-md-8", rows = "5", style = "max-width: 600px" })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group" >
+            <div class="col-md-offset-3 col-md-10">
+                <input type="submit" value="ارسال درخواست" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("لیست درخواستها", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

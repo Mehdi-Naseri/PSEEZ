@@ -1,0 +1,1 @@
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Pseez.UI.IT.MvcApplication" Language="C#" %>

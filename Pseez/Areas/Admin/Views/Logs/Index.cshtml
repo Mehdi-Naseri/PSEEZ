@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Pseez.DomainClasses.Models.PseezEnt.Management.Log>
+
+@{
+    ViewBag.Title = "لیست لاگها";
+}
+
+<h2>لیست لاگها</h2>
+
+<p>
+    @Html.ActionLink("اضافه کردن", "Create", null, new { @class="btn btn-primary"  })
+</p>
+<table class="table table-bordered table-condensed table-striped table-hover" >
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Message)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Message)
+        </td>
+        <td>
+            @Html.ActionLink("تغییر", "Edit", new { id = item.Id }, new { @class = "btn btn-default" })
+            @Html.ActionLink("حزئیات", "Details", new { id = item.Id }, new { @class = "btn btn-default" })
+            @Html.ActionLink("حذف", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

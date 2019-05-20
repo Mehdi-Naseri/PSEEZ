@@ -1,0 +1,33 @@
+﻿@model Pseez.DomainClasses.Models.PseezEnt.Common.Log
+
+@{
+    ViewBag.Title = "جزئیات";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>لاگ</h4>
+    <hr/>
+    <dl class="dl-horizontal ">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("تغییر", "Edit", new {id = Model.Id}) |
+    @Html.ActionLink("بازگشت به لیست", "Index")
+</p>

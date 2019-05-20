@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{92A6E8D6-4067-4CC4-A5EF-A1B142B8DC96}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pseez.DomainClasses</RootNamespace>
+    <AssemblyName>Pseez.DomainClasses</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\PseezEnt\Cmms\MainSite.cs" />
+    <Compile Include="Models\PseezEnt\Cmms\SiteSecondary.cs" />
+    <Compile Include="Models\PseezEnt\Cmms\RepairRequest.cs" />
+    <Compile Include="Models\PseezEnt\Common\Contact.cs" />
+    <Compile Include="Models\PseezEnt\Common\ContactList.cs" />
+    <Compile Include="Models\PseezEnt\Common\ContactGroup.cs" />
+    <Compile Include="Models\PseezEnt\Common\UserContactList.cs" />
+    <Compile Include="Models\PseezEnt\Common\UserDefaultContactList.cs" />
+    <Compile Include="Models\PseezEnt\Pmbok\Log.cs" />
+    <Compile Include="Models\PseezEnt\Pmbok\Project.cs" />
+    <Compile Include="Models\PseezEnt\Pmbok\ProjectDocument.cs" />
+    <Compile Include="Models\PseezEnt\Pmbok\ProjectDocumentFile.cs" />
+    <Compile Include="Models\PseezEnt\Pmbok\ProjectDocumentFileDeleted.cs" />
+    <Compile Include="Models\PseezEnt\Pmbok\ProjectDocumentValue.cs" />
+    <Compile Include="Models\PseezEnt\VisitRegistration\Registration.cs" />
+    <Compile Include="Models\Sts\Jouney\Provider.cs" />
+    <Compile Include="Models\Sts\Jouney\ReservationPersonList.cs" />
+    <Compile Include="Models\PseezEnt\IT\Backup.cs" />
+    <Compile Include="Models\PseezEnt\IT\Server.cs" />
+    <Compile Include="Models\PseezEnt\Common\Log.cs" />
+    <Compile Include="Models\PseezEnt\Common\WebsiteVisitor.cs" />
+    <Compile Include="Models\Sts\Staff\BloodType.cs" />
+    <Compile Include="Models\Sts\Staff\Employee.cs" />
+    <Compile Include="Models\Sts\Basic\City.cs" />
+    <Compile Include="Models\Sts\Staff\DegreeState.cs" />
+    <Compile Include="Models\Sts\Staff\EmployeeAcademicalResume.cs" />
+    <Compile Include="Models\Sts\Staff\EmployeeFamilialType.cs" />
+    <Compile Include="Models\Sts\Staff\EmployeeOrganChart.cs" />
+    <Compile Include="Models\Sts\Staff\FamilialType.cs" />
+    <Compile Include="Models\Sts\Basic\Gender.cs" />
+    <Compile Include="Models\Sts\Staff\OrganChart.cs" />
+    <Compile Include="Models\Sts\Basic\Person.cs" />
+    <Compile Include="Models\Sts\Basic\Province.cs" />
+    <Compile Include="Models\Sts\Staff\Religion.cs" />
+    <Compile Include="Models\Sts\Jouney\TimeTable.cs" />
+    <Compile Include="Models\Sts\Staff\Unit.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\PseezEnt\Tools\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Identity.Models\Identity.Models.csproj">
+      <Project>{197ee445-8cd0-437b-8fa7-2938f714b8f9}</Project>
+      <Name>Identity.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,133 @@
+﻿@model IEnumerable<Pseez.Model.ViewModels.PseezEnt.Datacenter.ActiveDirectoryUserViewModel>
+
+@{
+    ViewBag.Title = "کاربران اکتیو دایرکتوری";
+}
+
+<h2>کاربران اکتیو دایرکتوری</h2>
+
+<br />
+<span class="alert alert-warning"> @ViewBag.ErrorMessage</span>
+<br />
+<br />
+
+<div class="form-horizontal">
+    <div class="form-group ">
+        <label class="control-label col-md-2">نام دامین</label>
+        <div class="col-md-10">
+            <input id="DomainName" type="text" value="@ViewBag.DomainName" class="form-control" dir="ltr">
+        </div>
+    </div>
+    <div class="form-group ">
+        <label class="control-label col-md-2">Container</label>
+        <div class="col-md-10">
+            <input id="Container" type="text" value="@ViewBag.Container" class="form-control" dir="ltr">
+        </div>
+    </div>
+</div>
+<button id="ShowResult" class="btn btn-primary col-md-offset-2">نمایش کاربران</button>
+
+<div class="k-rtl">
+    <div id="grid"></div>
+</div>
+
+
+@section Styles{
+    <link href="~/Content/kendo/2015.1.318/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/2015.1.318/kendo.blueopal.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/2015.1.318/kendo.rtl.min.css" rel="stylesheet" />
+}
+@section Scripts{
+    <script src="~/Scripts/jszip/jszip.min-2.5.0.js"></script>
+    <script src="~/Scripts/kendo/2015.1.318_Complete/kendo.all.min.js"></script>
+    <script src="~/Scripts/kendo/KendoFarsi/kendo.fa-IR.js"></script>
+
+    <script>
+        kendo.culture("fa-IR");
+    </script>
+    <script>
+        $(document).ready(function () {
+            var ShowGrid = function () {
+                var GridDataSource = new kendo.data.DataSource({
+                    type: "json",
+                    transport: {
+                        read: {
+                            @*url: "@Url.Action("Read")" + "?DomainName=" + $("#DomainName").val() + "&Container=" + $("#Container").val(),*@
+                            dataType: "json",
+                            type: "GET",
+                            contentType: "application/json; charset=utf-8",
+                        },
+                        //parameterMap: function (options) {
+                        //    return JSON.stringify(options);
+                        //}
+                    },
+                    schema: {
+                        model: {
+                            id: "Id",
+                            fields: {
+                                SamAccountName: { type: "string" },
+                                DisplayName: { type: "string" },
+                                Name: { type: "string" },
+                                GivenName: { type: "string" },
+                                Surname: { type: "string" },
+                                Description: { type: "string" },
+                                Enabled: { type: "boolean" },
+                                LastLogon: { type: "string" },
+                            }
+                        }
+                    },
+                    error: function (e) {
+                        alert(e.errorThrown + "\n" + "دریافت اطلاعات امکان پذیر نشد");
+                    },
+                    pageSize: 10
+                });
+
+                $("#grid").kendoGrid({
+                    dataSource: GridDataSource,
+                    autoBind: true,
+                    selectable: "row",
+                    navigatable: true,
+                    //height: 430,
+                    groupable: true,
+                    scrollable: true,
+                    sortable: true,
+                    filterable: true,
+                    resizable: true,
+                    pageable: {
+                        refresh: true,
+                        pageSizes: true,
+                        input: true,
+                        numeric: false
+                    },
+                    columns: [
+                        { field: "SamAccountName", title: "نام کاربری" },
+                        { field: "DisplayName", title: "نام نمایش داده شده" },
+                        { field: "Name", title: "نام" },
+                        { field: "GivenName", title: "نام مستعار" },
+                        { field: "Surname", title: "نام فامیل" },
+                        { field: "Description", title: "توضیحات" },
+                        { field: "Enabled", title: "فعال" },
+                        {
+                            field: "LastLogon",
+                            title: "آخرین تاریخ ورود",
+                            attributes: {
+                                "class": "text-center",
+                                styles: "direction:ltr"
+                            }
+
+                        }
+                    ],
+                });
+            };
+            //ShowGrid();
+            $("#ShowResult").on("click", function () {
+                ShowGrid();
+                var grid = $("#grid").data("kendoGrid");
+                grid.dataSource.transport.options.read.url = "@Url.Action("Read")" + "?DomainName=" + $("#DomainName").val() + "&Container=" + $("#Container").val();
+                grid.dataSource.read();
+                //ShowGrid();
+            });
+        });
+
+    </script>
+}

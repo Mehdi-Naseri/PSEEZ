@@ -1,0 +1,136 @@
+﻿@using System.Globalization
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Pseez</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @*جهت اضافه کردن استایلهاي جدید اضافه شده اند.*@
+    @RenderSection("Styles", false)
+    <link rel="shortcut icon" href="~/Content/Meh/Images/PseezLogo_Small.ico"/>
+    <link href="~/Content/Meh/BootstrapRtl/bootstrap-rtl.min.css" rel="stylesheet"/>
+    <link href="~/Content/Meh/MehRtLMenu.css" rel="stylesheet"/>
+    <link href="~/Content/Meh/Meh.css" rel="stylesheet"/>
+</head>
+<body dir="rtl">
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="@Url.Action("Index", "Home", new {area = ""})">
+                    <img src="~/Content/Meh/Images/PseezLogo_Small.png"/>
+                </a>
+                @*@Html.ActionLink('', "Index", "Home", null, new { @class = "navbar-brand" })*@
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("خانه", "Index", "Home", new {area = ""}, null)</li>
+
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">پرسنلی<span class="caret"></span> </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("شهر", "Index", "City", new {area = "Personnel"}, null)</li>
+                            <li>@Html.ActionLink("جنسیت", "Index", "Gender", new {area = "Personnel"}, null)</li>
+                            <li>@Html.ActionLink("اشخاص", "Index", "Person", new {area = "Personnel"}, null)</li>
+                            <li>@Html.ActionLink("استانها", "Index", "Province", new {area = "Personnel"}, null)</li>
+                            <li role="presentation" class="divider"></li>
+                            <li>@Html.ActionLink("گروه خون", "Index", "BloodType", new {area = "Personnel"}, null)</li>
+                            <li>@Html.ActionLink("مدارک تحصیلی", "Index", "DegreeState", new {area = "Personnel"}, null)</li>
+                            <li>@Html.ActionLink("کارمند", "Index", "Employee", new {area = "Personnel"}, null)</li>
+                            <li>@Html.ActionLink("مدرک دانشگاهی کارمند", "Index", "EmployeeAcademicalResume", new {area = "Personnel"}, null)</li>
+                            <li>@Html.ActionLink("وضعیت تاهل کارمند", "Index", "EmployeeFamilialType", new {area = "Personnel"}, null)</li>
+                            <li>@Html.ActionLink("چارت سازمانی کارمند", "Index", "EmployeeOrganChart", new {area = "Personnel"}, null)</li>
+                            <li>@Html.ActionLink("وضعیت تاهل", "Index", "FamilialType", new {area = "Personnel"}, null)</li>
+                            <li>@Html.ActionLink("چارت سازمانی", "Index", "OrganChart", new {area = "Personnel"}, null)</li>
+                            <li>@Html.ActionLink("دین", "Index", "Religion", new {area = "Personnel"}, null)</li>
+                            <li>@Html.ActionLink("واحد", "Index", "Unit", new {area = "Personnel"}, null)</li>
+                            <li role="presentation" class="divider"></li>
+                            <li>@Html.ActionLink("جدول زمانی", "Index", "TimeTable", new {area = "Personnel"}, null)</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">کزارشات پرسنلی<span class="caret"></span> </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("پرسنل", "Index", "EmployeeDetail", new {area = "PersonnelReports"}, null)</li>
+                            <li>@Html.ActionLink("پروازها", "Index", "Flights", new {area = "PersonnelReports"}, null)</li>
+                        </ul>
+                    </li>
+                    @*<li class="dropdown">
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown">مدیریت پروژه ها<span class="caret"></span> </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("پروژه ها", "Index", "Projects", new { area = "Projects" }, null)</li>
+                                </ul>
+                            </li>*@
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">دیتا سنتر<span class="caret"></span> </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("سرورها", "Index", "Servers", new {area = "DataCenter"}, null)</li>
+                            <li>@Html.ActionLink("اتصال به سرورها", "Index", "ServerInformation", new {area = "DataCenter"}, null)</li>
+                            <li>@Html.ActionLink("پشتیبانها", "Index", "Backup", new {area = "DataCenter"}, null)</li>
+                            <li>@Html.ActionLink("ابزارهای شبکه", "Index", "WebTools", new {area = "DataCenter"}, null)</li>
+                            <li>@Html.ActionLink("کاربران اکتیو دایرکتوری", "Index", "ActiveDirectoryUsers", new {area = "DataCenter"}, null)</li>
+                            <li>@Html.ActionLink("کامپیوترهای اکتیو دایرکتوری", "Index", "ActiveDirectoryComputers", new {area = "DataCenter"}, null)</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">ابزارها<span class="caret"></span> </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("شماره تماسها", "Index", "Contacts", new {area = "ContactList"}, null)</li>
+                            @if (User.IsInRole("Admin") || User.IsInRole("ContactListAdmin"))
+                            {
+                                <li role="presentation" class="divider"></li>
+                                <li>@Html.ActionLink("لیست دفترچه تلفن ها", "Index", "ContactList", new {area = "ContactList"}, null)</li>
+                                <li>@Html.ActionLink("گروه شماره تلفن ها", "Index", "ContactGroup", new {area = "ContactList"}, null)</li>
+                                <li>@Html.ActionLink("کاربران دفترچه تلفن", "Index", "UserContactList", new {area = "ContactList"}, null)</li>
+                            }
+                        </ul>
+                    </li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="dropdown">
+                            <a href=@Url.Action("index", "Admin", new {area = "Admin"}) class="dropdown-toggle" data-toggle="dropdown">مدیریت<span class="caret"></span> </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink(" کاریران", "AllUsers", "Identity", new {area = "Admin"}, null)</li>
+                                <li>@Html.ActionLink("گروهها", "AllRoles", "Identity", new {area = "Admin"}, null)</li>
+                                <li>@Html.ActionLink("گروههای کاربران", "AllUsersInRoles", "Identity", new {area = "Admin"}, null)</li>
+                                <li>@Html.ActionLink("بازدید کنندگان", "Index", "WebsiteVisitors", new {area = "Admin"}, null)</li>
+                                <li>@Html.ActionLink("لاگها", "Index", "Logs", new {area = "Admin"}, null)</li>
+                            </ul>
+                        </li>
+                    }
+                </ul>
+
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+}
+@RenderSection("HomeBootstrapSlideshow", false)
+<div class="container body-content">
+    @RenderBody()
+    <hr/>
+    <footer>
+        @*<p>&copy; @DateTime.Now.Year - Pseez</p>*@
+        <p class="text-center">
+            PSEEZ&copy; -
+            @Html.Raw((new PersianCalendar()).GetYear(DateTime.Now).ToString())
+
+        </p>
+    </footer>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", false)
+<script src="~/Scripts/Meh/MehJavaScript.js"></script>
+</body>
+</html>

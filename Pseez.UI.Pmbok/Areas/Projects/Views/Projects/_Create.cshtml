@@ -1,0 +1,59 @@
+﻿@model Pseez.ViewModels.ViewModels.PseezEnt.Pmbok.ProjectViewModel
+
+<div class="modal-header alert-info">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove closePanel"></span></button>
+    <h3 class="modal-title">Add New Project</h3>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="modal-body">
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group Meh-required">
+                @Html.LabelFor(model => model.Name, new { @class = "control-label col-sm-3" })
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", required = true, placeholder = "Project Name" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    @Html.ValidationMessage("DuplicateRecord", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.StartDate, new { @class = "control-label col-sm-3" })
+                <div class="col-sm-9">
+                    <div class="input-group Meh-datePicker">
+                        @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control ", type = "text", placeholder = "Project End Date" } })
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.EndDate, new { @class = "control-label col-sm-3" })
+                <div class="col-sm-9">
+                    <div class="input-group Meh-datePicker">
+                        @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control ", type = "text", placeholder = "Project End Date" } })
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <span id="progress" class="text-center" style="display: none;">
+            <img src="~/Content/Meh/Images/wait.gif" alt="wait" />
+            Sending ...
+        </span>
+
+        <input class="btn btn-primary" type="submit" value="Save" />
+        <button class="btn btn-warning" data-dismiss="modal">Close</button>
+    </div>
+}
+

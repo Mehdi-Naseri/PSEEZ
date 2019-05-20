@@ -1,0 +1,19 @@
+﻿@*<div>.1 Project management plan</div>*@
+
+@model Pseez.ViewModels.ViewModels.PseezEnt.Pmbok.ProjectDocumentLatestValueFilesViewModel
+<div class="panel-group" @*id="accordion"*@ role="tablist" aria-multiselectable="true">
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="heading-o1">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-o1">
+                    1. Project management plan
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-o1" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+                @Html.ActionLink("Project Management Plans", "Index", "ProjectManagementPlans", new { area = "Documents" }, null)
+            </div>
+        </div>
+    </div>
+</div>

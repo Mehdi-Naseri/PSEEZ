@@ -1,0 +1,40 @@
+﻿@model Pseez.DomainClasses.Models.PseezEnt.Management.Log
+
+@{
+    ViewBag.Title = "حذف";
+}
+
+<h2>حذف</h2>
+
+<h3>آیا این  داده حذف شود؟</h3>
+<div>
+    <h4>لاگ</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-danger col-md-offset-2" /> 
+            <br/> <br />
+            @Html.ActionLink("بازگشت به لیست", "Index")
+        </div>
+    }
+</div>

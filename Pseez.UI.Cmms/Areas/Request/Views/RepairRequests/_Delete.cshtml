@@ -1,0 +1,81 @@
+﻿@model Pseez.ViewModels.ViewModels.PseezEnt.Cmms.RequestUserViewModel
+
+<div class="modal-header alert-danger">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        <span class="glyphicon glyphicon-remove closePanel"></span>
+    </button>
+    <h3 class="modal-title">حذف درخواست</h3>
+</div>
+
+
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(m => Model.RequestByName, new { @class = "control-label col-sm-3" })
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.RequestByName, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => Model.RequestById, new { @class = "control-label col-sm-3" })
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.RequestById, new { @class = "form-control col-sm-6", @disabled = "disabled", dir = "ltr" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => Model.RequestDate, new { @class = "control-label col-sm-3" })
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.RequestDate, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => Model.Description, new { @class = "control-label col-sm-3" })
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.Description, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => Model.MainSite, new {@class = "control-label col-sm-3"})
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.MainSite, new {@class = "form-control", @disabled = "disabled"})
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => Model.SiteSecondary, new {@class = "control-label col-sm-3"})
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.SiteSecondary, new {@class = "form-control", @disabled = "disabled"})
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => Model.RequestType, new { @class = "control-label col-sm-3" })
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.RequestType, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => Model.Description, new { @class = "control-label col-sm-3" })
+            <div class="col-sm-9">
+                @Html.TextAreaFor(m => m.Description, new { @class = "form-control", @disabled = "disabled", rows = "5" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+                <h3>
+                    <span class="label label-danger">
+                        آیا مایلید این مورد حذف گردد؟
+                    </span>
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <input class="btn btn-danger" type="submit" value="بله" />
+        <button class="btn btn-primary" data-dismiss="modal">خیر</button>
+    }
+</div>

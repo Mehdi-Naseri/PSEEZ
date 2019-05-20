@@ -1,0 +1,106 @@
+﻿@*<div>.1 Project management plan</div>
+<div>.2 Accepted deliverables</div>
+<div>.3 Organizational process assets</div>*@
+
+@model Pseez.ViewModels.ViewModels.PseezEnt.Pmbok.ProjectDocumentLatestValueFilesViewModel
+
+<div class="panel-group" @*id="accordion"*@ role="tablist" aria-multiselectable="true">
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="heading1">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true">
+                    1. Project management plan
+                </a>
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
+            <div class="panel-body">
+                <div class="meh-documentGroup">
+                    <div class="form-group">
+                        @Html.TextAreaFor(model => model.ProjectStatementOfWork)
+                    </div>
+                    <div class="form-group">
+                        @foreach (var file in Model.ProjectStatementOfWorkFiles)
+                        {
+                            <div class="meh-documentFile">
+                                @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="heading2">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="true">
+                    2. Accepted deliverables
+                </a>
+            </h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+            <div class="panel-body">
+                @*<div class="meh-documentGroup">
+                    <div class="form-group">
+                        @Html.TextAreaFor(model => model.AcceptedDeliverables)
+                    </div>
+                    <div class="form-group">
+                        @foreach (var file in Model.AcceptedDeliverablesfiles)
+                        {
+                            <div class="meh-documentFile">
+                                @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                            </div>
+                        }
+                    </div>
+                </div>*@
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="heading3">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="true">
+                    3. Organizational process assets
+                </a>
+            </h4>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.Label("Processes & Procedures")
+                    <div class="meh-documentGroup">
+                        <div class="form-group">
+                            @Html.TextAreaFor(model => model.ProcessesAndProcedures)
+                        </div>
+                        <div class="form-group">
+                            @foreach (var file in Model.ProcessesAndProceduresFiles)
+                            {
+                                <div class="meh-documentFile">
+                                    @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="form-group">
+                    @Html.Label("Corporate Knowledge Base")
+                    <div class="meh-documentGroup">
+                        <div class="form-group">
+                            @Html.TextAreaFor(model => model.CorporateKnowledgeBase)
+                        </div>
+                        <div class="form-group">
+                            @foreach (var file in Model.CorporateKnowledgeBaseFiles)
+                            {
+                                <div class="meh-documentFile">
+                                    @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,214 @@
+﻿@model Pseez.ViewModels.ViewModels.PseezEnt.Pmbok.ProjectDocumentLatestValueFilesViewModel
+@{
+    ViewBag.Title = "External Documents";
+}
+
+
+<div id="documentsIndexPage">
+    <div class="panel-group meh-panel-shadow" role="tablist" aria-multiselectable="true">
+        <div class="row">
+            <h3 class="alert alert-success col-md-5 meh-shadow" style="margin-left: 20px;">
+                External Documents
+            </h3>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="heading1">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                        Organizational Process Assets
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.Label("Processes & Procedures")
+                        <div class="meh-documentGroup">
+                            <div class="form-group">
+                                @Html.TextAreaFor(model => model.ProcessesAndProcedures)
+                            </div>
+                            <div class="form-group meh-kendouiUpload">
+                                @foreach (var file in Model.ProcessesAndProceduresFiles)
+                                {
+                                    <div class="meh-documentFile">
+                                        @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        @Html.Label("Corporate Knowledge Base")
+                        <div class="meh-documentGroup">
+                            <div class="form-group">
+                                @Html.TextAreaFor(model => model.CorporateKnowledgeBase)
+                            </div>
+                            <div class="form-group meh-kendouiUpload">
+                                @foreach (var file in Model.CorporateKnowledgeBaseFiles)
+                                {
+                                    <div class="meh-documentFile">
+                                        @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="heading2">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                        Enterprise Environmental Factors
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+                <div class="panel-body">
+                    <div class="meh-documentGroup">
+                        <div class="form-group">
+                            @Html.TextAreaFor(model => model.EnterpriseEnvironmentalFactors)
+                        </div>
+                        <div class="form-group meh-kendouiUpload">
+                            @foreach (var file in Model.EnterpriseEnvironmentalFactorsFiles)
+                            {
+                                <div class="meh-documentFile">
+                                    @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="heading3">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="true" aria-controls="collapse3">
+                        Project Initiator / Sponsor
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.Label("Agreements")
+                        <div class="meh-documentGroup">
+                            <div class="form-group">
+                                @Html.TextAreaFor(model => model.Agreements)
+                            </div>
+                            <div class="form-group meh-kendouiUpload">
+                                @foreach (var file in Model.AgreementsFiles)
+                                {
+                                    <div class="meh-documentFile">
+                                        @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        @Html.Label("Business case")
+                        <div class="meh-documentGroup">
+                            <div class="form-group">
+                                @Html.TextAreaFor(model => model.BusinessCase)
+                            </div>
+                            <div class="form-group meh-kendouiUpload">
+                                @foreach (var file in Model.BusinessCaseFiles)
+                                {
+                                    <div class="meh-documentFile">
+                                        @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        @Html.Label("Project statement of work")
+                        <div class="meh-documentGroup">
+                            <div class="form-group">
+                                @Html.TextAreaFor(model => model.ProjectStatementOfWork)
+                            </div>
+                            <div class="form-group meh-kendouiUpload">
+                                @foreach (var file in Model.ProjectStatementOfWorkFiles)
+                                {
+                                    <div class="meh-documentFile">
+                                        @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+
+    @*--------------Enable/Disable Edit------------------------*@
+    <div class="row">
+        <div class="alert alert-info col-md-3 meh-shadow">
+            Edit:
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-info active">
+                    <input type="radio" name="EditMode" id="DisableEdit" value="Disable" checked />Disable
+                </label>
+                <label class="btn btn-info ">
+                    <input type="radio" name="EditMode" id="EnableEdit" value="Enable" />Enable
+                </label>
+            </div>
+        </div>
+
+        @*--------------Enable/Disable Edit------------------------*@
+
+        <div class="alert alert-info col-md-offset-1 col-md-3 meh-shadow">
+            History:
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-info active">
+                    <input type="radio" name="HistoryMode" id="DisableHistory" value="Disable" checked />Disable
+                </label>
+                <label class="btn btn-info ">
+                    <input type="radio" name="HistoryMode" id="EnableHistory" value="Enable" />Enable
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*--------------Modal------------------------*@
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title ">Result</h4>
+            </div>
+            <div class="modal-body">
+                <p id="modalBodyContent"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+@section scripts{
+    <script>
+        //آماده سازی اولیه
+        $(function () {
+            $("textarea").attr("disabled", "disabled");
+            $(".meh-ToggleHidden").attr("hidden", "hidden");
+        });
+    </script>
+}

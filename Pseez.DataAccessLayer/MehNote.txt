@@ -1,0 +1,5 @@
+﻿
+Add-Migration -ConfigurationTypeName Pseez.DataAccessLayer.Migrations.PseezEntMigration.Configuration InitialCreate -Verbose
+
+Update-Database -ConfigurationTypeName Pseez.DataAccessLayer.Migrations.PseezEntMigration.Configuration -Verbos
+

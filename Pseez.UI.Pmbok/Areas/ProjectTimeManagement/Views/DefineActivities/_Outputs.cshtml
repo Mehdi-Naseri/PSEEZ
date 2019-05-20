@@ -1,0 +1,85 @@
+﻿@*<div>.1 Activity list</div>
+<div>.2 Activity attributes</div>
+<div>.3 Milestone list</div>*@
+
+@model Pseez.ViewModels.ViewModels.PseezEnt.Pmbok.ProjectDocumentLatestValueFilesViewModel
+<div class="panel-group" @*id="accordion"*@ role="tablist" aria-multiselectable="true">
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="heading-o1">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-o1">
+                    1. Activity list
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-o1" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+                <div class="meh-documentGroup">
+                    <div class="form-group">
+                        @Html.TextAreaFor(model => model.ActivityList)
+                    </div>
+                    <div class="form-group meh-kendouiUpload">
+                        @foreach (var file in Model.ActivityListFiles)
+                        {
+                            <div class="meh-documentFile">
+                                @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="heading-o2">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-o2">
+                    2. Activity attributes
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-o2" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+                <div class="meh-documentGroup">
+                    <div class="form-group">
+                        @Html.TextAreaFor(model => model.ActivityAttributes)
+                    </div>
+                    <div class="form-group meh-kendouiUpload">
+                        @foreach (var file in Model.ActivityAttributesFiles)
+                        {
+                            <div class="meh-documentFile">
+                                @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="heading-o3">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-o3">
+                    3. Milestone list
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-o3" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+                <div class="meh-documentGroup">
+                    <div class="form-group">
+                        @Html.TextAreaFor(model => model.MilestoneList)
+                    </div>
+                    <div class="form-group meh-kendouiUpload">
+                        @foreach (var file in Model.MilestoneListFiles)
+                        {
+                            <div class="meh-documentFile">
+                                @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

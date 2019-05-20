@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "پروژه ها";
+}
+
+<h2>پروژه ها</h2>
+<hr />
+<div class="row">
+    <div class="k-rtl col-md-3" style="border-style:solid;border-color:aqua;border-radius:5px;background-color:white">
+        <ul id="TreeView1">
+            <li data-expanded="true">
+                پارس 1
+                <ul>
+                    <li>پروژه 1</li>
+                    <li>پروژه 2</li>
+                    <li>پروژه 3</li>
+                </ul>
+            </li>
+            <li data-expanded="true">
+                پارس 2
+                <ul>
+                    <li>پروژه 1</li>
+                    <li>پروژه 2</li>
+                    <li>پروژه 3</li>
+                </ul>
+            </li>
+            <li data-expanded="true">
+                پارس 3
+                <ul>
+                    <li>پروژه 1</li>
+                    <li>پروژه 2</li>
+                    <li>پروژه 3</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-9">
+        <div id="TreeView2"></div>
+    </div>
+</div>
+@section Styles{
+    <link href="~/Content/kendo/2015.1.318/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/2015.1.318/kendo.rtl.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/2015.1.318/kendo.default.min.css" rel="stylesheet" />
+}
+
+@section Scripts{
+    <script src="~/Scripts/kendo/2015.1.318_Complete/kendo.all.min.js"></script>
+    <script>
+        $(function () {
+            $("#TreeView1").kendoTreeView();
+        });
+    </script>
+    <script>
+        $(function () {
+            var serviceRoot = "http://demos.kendoui.com/service";
+            homogeneous = new kendo.data.HierarchicalDataSource({
+                transport: {
+                    read: {
+                        url: serviceRoot + "/Employees",
+                        dataType: "jsonp"
+                    }
+                },
+                schema: {
+                    model: {
+                        id: "EmployeeId",
+                        hasChildren: "HasEmployees"
+                    }
+                }
+            });
+
+            $("#TreeView2").kendoTreeView({
+                dataSource: homogeneous,
+                dataTextField: "FullName"
+            });
+        });
+    </script>
+}

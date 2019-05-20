@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "ابزارها";
+}
+
+<h2>ابزارها</h2>
+
+<br />
+<label>IP های شما:  @*@Request.UserHostAddress*@</label><br/>
+@Html.Raw(@ViewBag.IP)
+<hr />
+
+<section>
+    <h3>DNS</h3>
+    <form class="form-inline">
+        <div class="row">
+            <div class="input-group">
+                <input type="text" id="Text2DNS" name="Text2DNS" placeholder="Ex: google.com" class="form-control" style="max-width:inherit" dir="ltr" />
+                <span class="input-group-btn">
+                    <input type="submit" id="SubmitDNS" name="SubmitDNS" value="DNS" dir="ltr" class="btn btn-primary" />
+                </span>
+            </div>
+        </div>
+    </form>
+    <div id="reslutDNS"></div>
+</section>
+<hr />
+<section>
+    <h3>Ping</h3>
+    <form class="form-inline">
+        <div class="row">
+            <div class="input-group">
+                <input type="text" id="Text2Ping" name="Text2Ping" placeholder="Ex: google.com" class="form-control" style="max-width:inherit" dir="ltr"/>
+                <span class="input-group-btn">
+                    <input type="submit" id="SubmitPing" name="SubmitPing" value="Ping" dir="ltr" class="btn btn-primary" />
+                </span>
+            </div>
+        </div>
+    </form>
+    <div id="reslutPing"></div>
+</section>
+
+
+@section Scripts{
+    <script type="text/javascript">
+        $(function () {
+            $('#SubmitDNS').click(function () {
+                var form = $(this).parents("form");
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("DNS")',
+                    data: form.serialize()
+                })
+                .success(function (JsonResult) {
+                    $('#reslutDNS').replaceWith('<div id="reslutDNS">' + JsonResult + '</div>');
+                    //alert("Finished Successfuly");
+                })
+                .error(function () {
+                    alert("Error");
+                });
+                return false;
+            });
+            $('#SubmitPing').click(function () {
+                var form = $(this).parents("form");
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Ping")',
+                    data: form.serialize()
+                })
+                .success(function (JsonResult) {
+                    $('#reslutPing').replaceWith('<div id="reslutPing">' + JsonResult + '</div>');
+                    //alert("Finished Successfuly");
+                })
+                .error(function () {
+                    alert("Error");
+                });
+                return false;
+            });
+        });
+    </script>
+}

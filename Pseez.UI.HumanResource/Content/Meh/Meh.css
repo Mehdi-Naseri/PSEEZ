@@ -1,0 +1,137 @@
+﻿/*////////////////////////////////////////////////////////////////
+//                    CSS by Mehdi Naseri                       //
+////////////////////////////////////////////////////////////////*/
+
+body {
+    /*font-size: 13px;*/
+    background-image: url("../../Content/Meh/Images/Background.png");
+    font-family: Tahoma;
+}
+
+/*////////////////////////////////////////////////////////////////
+//                  اضافه کردن سایه
+////////////////////////////////////////////////////////////////*/
+
+.jumbotron { box-shadow: -8px 10px 9px 4px rgba(0, 0, 0, 0.7); }
+
+.panel {
+    border-radius: 8px;
+    box-shadow: -8px 10px 9px 4px rgba(0, 0, 0, 0.7);
+}
+
+.panel .panel {
+    border-radius: 8px;
+    box-shadow: -2px 2px 2px 1px rgb(128, 128, 128);
+}
+
+.panel .dl-horizontal { border-radius: 6px; }
+
+.panel .panel {
+    background-image: url("../../Content/Meh/Images/Background2.png");
+    padding-left: 10px;
+    padding-right: 20px;
+}
+
+
+
+/*////////////////////////////////////////////////////////////////
+//                    //نازکتر کردن سمت چپ منو شامل ثبت نام و ورود 
+////////////////////////////////////////////////////////////////*/
+
+.navbar-right a { font-size: smaller; }
+
+
+/*////////////////////////////////////////////////////////////////
+//                 جهت تغيير رنگ منوهاي بالا                  //
+////////////////////////////////////////////////////////////////*/
+
+.navbar-inverse {
+    /*background-color: rgb(33, 35, 76);*/
+    /*کمی روشنتر*/
+    background-color: rgb(44, 47, 116);
+}
+
+.navbar .navbar-nav > li > a:hover {
+    background-color: black;
+    color: #fff;
+}
+
+.navbar .dropdown-menu > li > a,
+.navbar .dropdown-menu {
+    background-color: rgb(53, 56, 118);
+    color: #C8C8C8;
+}
+
+.navbar .dropdown-menu > li > a:hover {
+    background-color: black;
+    color: #fff;
+}
+
+
+/*////////////////////////////////////////////////////////////////
+//                    Kendo UI Grid
+////////////////////////////////////////////////////////////////*/
+
+/*نمایش نام ستونها به صورت کامل در یک خط*/
+
+.k-grid-header .k-header .k-link {
+    overflow: visible !important;
+    white-space: nowrap !important;
+}
+
+.k-grid tbody td { white-space: nowrap !important; }
+
+/*ایجاد فاصله بین کامندها*/
+
+td .btn { margin-left: 1px; }
+
+.k-grid table { /*position:inherit !important;*/ }
+
+.k-grid-content { /*overflow-y: auto;*/ }
+
+.k-grid table { /*margin-right: 0.01%;*/ }
+
+
+/*////////////////////////////////////////////////////////////////
+//                  Full Screen carousel
+////////////////////////////////////////////////////////////////*/
+
+.carousel.slide { /*margin-top: 0px;*/ }
+
+.carousel .item {
+    max-height: 620px; /*slider height*/
+    width: 100%; /*slider width*/
+}
+
+.carousel .item img {
+    width: 100%; /*img width*/
+}
+
+/*full width container*/
+
+@media (max-width: 767px) {
+    .block {
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+}
+
+/*////////////////////////////////////////////////////////////////
+//          Add asterisk after required fields
+////////////////////////////////////////////////////////////////*/
+
+.form-group.Meh-required .control-label::after {
+    color: red;
+    content: "*";
+}
+
+/*////////////////////////////////////////////////////////////////
+//              Tools popover                  //
+////////////////////////////////////////////////////////////////*/
+
+.popover-title { color: black; }
+
+.popover-content {
+    color: blueviolet;
+    font-size: small;
+}

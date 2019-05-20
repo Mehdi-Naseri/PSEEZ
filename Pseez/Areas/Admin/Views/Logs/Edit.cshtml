@@ -1,0 +1,79 @@
+﻿@model   Pseez.DomainClasses.Models.PseezEnt.Management.Log
+
+@{
+    ViewBag.Title = "تغییر";
+}
+
+<h2>تغییر</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>لاگ</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateTime, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*<input class="text-box single-line form-control" data-val="true" data-val-date="در فیلد تاریخ باید مقدار تاریخ وارد شود." data-val-required="تاریخ را وارد نمایید" id="DateTime" name="DateTime" type="datetime" value=@Model.DateTime />*@
+                @*@Html.EditorFor(model => model.DateTime, new { htmlAttributes = new { @class = "form-Control" } })*@
+                @*<input type="datetime" id="DateTime" class="form-control" />*@
+
+                <div class='input-group date col-md-3' id='datetimepicker1'>
+                    @Html.EditorFor(model => model.DateTime, new { htmlAttributes = new { @class = "form-control" } })
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+
+                @Html.ValidationMessageFor(model => model.DateTime)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Message, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Message, 10, 35, new { @class = "form-control", style = "width:300px;max-width:1200px" })
+                @Html.ValidationMessageFor(model => model.Message)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("بازگشت به لیست", "Index")
+</div>
+
+
+@section Styles{
+    <link href="~/Content/Meh/PersianDateTimePicker2/skins/aqua/theme.css" rel="stylesheet" />
+}
+
+
+@section Scripts{
+    <script src="~/Scripts/Meh/PersianDateTimePicker2/jalali.js"></script>
+    <script src="~/Scripts/Meh/PersianDateTimePicker2/calendar.js"></script>
+    <script src="~/Scripts/Meh/PersianDateTimePicker2/calendar-setup.js"></script>
+    <script src="~/Scripts/Meh/PersianDateTimePicker2/calendar-fa.js"></script>
+    <script type="text/javascript">
+        Calendar.setup({
+            inputField: "DateTime",   // id of the input field
+            button: "datetimepicker1",   // trigger for the calendar (button ID)
+            ifFormat: "%Y/%m/%d %H:%M",       // format of the input field
+            showsTime: true,
+            dateType: 'jalali',
+            timeFormat: "24",
+            weekNumbers: false
+        });
+    </script>
+}

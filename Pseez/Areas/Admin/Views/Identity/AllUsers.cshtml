@@ -1,0 +1,104 @@
+﻿@*@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityUser>*@
+@model IEnumerable<Pseez.DomainClasses.Models.Identity.ApplicationUser>
+
+@{
+    ViewBag.Title = "کاربران";
+}
+
+<h2>کاربران</h2>
+
+<p>
+    @Html.ActionLink("کاربر جدید", "CreateUser", null, new { @class = "btn btn-primary", data_modal = "" })
+</p>
+<div class="row">
+    <table class="table table-bordered table-hover table-responsive col-md-6">
+        <tr>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Id)
+                    شماره شناسایی
+                </th>*@
+            <th>
+                @*@Html.DisplayNameFor(model => model.UserName)*@
+                نام کاربری
+            </th>
+            <th>
+                ایمیل
+            </th>
+            <th style="width:110px"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td dir="ltr">
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+
+                    @Html.ActionLink(" ", "EditUser", new { id = item.Id }, new { @class = "btn btn-info glyphicon glyphicon-edit", data_modal = "" })
+                    @Html.ActionLink(" ", "DeleteUser", new { id = item.Id }, new { @class = "btn btn-danger glyphicon glyphicon-trash", data_modal = "" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+@*--------------------------------------------
+    ---------------- Modal  ---------------------
+    --------------------------------------------*@
+
+<div id='myModal' class='modal fade in'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'></div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script>
+        $(function () {
+            $.ajaxSetup({ cache: false });
+            $("a[data-modal]").on("click", function (e) {
+                $('#myModalContent').load(this.href, function () {
+                    $('#myModal').modal({
+                        keyboard: true
+                    }, 'show');
+                    bindForm(this);
+                });
+                return false;
+            });
+        });
+
+        function bindForm(dialog) {
+            $('form', dialog).submit(function () {
+                $('#progress').show();
+                $.ajax({
+                    url: this.action,
+                    type: this.method,
+                    data: $(this).serialize(),
+                    success: function (result) {
+                        if (result.success) {
+                            $('#myModal').modal('hide');
+                            $('#progress').hide();
+                            location.reload();
+                        } else {
+                            $('#progress').hide();
+                            $('#myModalContent').html(result);
+                            bindForm();
+                        }
+                    }
+                });
+                return false;
+            });
+        }
+    </script>
+}

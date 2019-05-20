@@ -1,0 +1,164 @@
+﻿@{
+    ViewBag.Title = "پروازها";
+}
+
+<h2>لیست پروازها</h2>
+
+<div class="row">
+    <form class="form-inline form-control col-md-3 label-success" style="height: 70px; margin-right: 15px;margin-bottom: 5px;">
+        <div class="form-group">
+            @Html.Label("سال", new {@class = "control-label"})
+            @*@Html.DropDownList("Year",ViewBag.Year as SelectList,new { @class = "control-label" })*@
+            <select id="Year" class="form-control">
+                <option value="1386">1386</option>
+                <option value="1387">1387</option>
+                <option value="1388">1388</option>
+                <option value="1389">1389</option>
+                <option value="1390">1390</option>
+                <option value="1391">1391</option>
+                <option value="1392">1392</option>
+                <option value="1393">1393</option>
+                <option value="1394" selected>1394</option>
+            </select>
+        </div>
+        <div class="form-group">
+            @Html.Label("ماه", new {@class = "control-label"})
+            @*@Html.DropDownList("Month", ViewBag.Months as SelectList, new { @class = "control-label" })*@
+            <select id="Month" class="form-control">
+                <option value="01" selected>فروردین</option>
+                <option value="02">اردیبهشت</option>
+                <option value="03">خرداد</option>
+                <option value="04">تیر</option>
+                <option value="05">مرداد</option>
+                <option value="06">شهریور</option>
+                <option value="07">مهر</option>
+                <option value="08">آبان</option>
+                <option value="09">آذر</option>
+                <option value="10">دی</option>
+                <option value="11">بهمن</option>
+                <option value="12">اسفند</option>
+            </select>
+        </div>
+    </form>
+</div>
+
+<div class="k-rtl">
+    <div id="grid"></div>
+</div>
+
+
+@section Styles{
+    <link href="~/Content/kendo/2015.1.318/kendo.common.min.css" rel="stylesheet"/>
+    <link href="~/Content/kendo/2015.1.318/kendo.blueopal.min.css" rel="stylesheet"/>
+    <link href="~/Content/kendo/2015.1.318/kendo.rtl.min.css" rel="stylesheet"/>
+}
+@section Scripts{
+    <script src="~/Scripts/jszip/jszip.min-2.5.0.js"></script>
+    <script src="~/Scripts/kendo/2015.1.318_Complete/kendo.all.min.js"></script>
+    <script src="~/Scripts/kendo/KendoFarsi/kendo.fa-IR.js"></script>
+
+    <script>
+
+    
+    </script>
+    <script>
+        kendo.culture("fa-IR");
+    </script>
+    <script>
+        $(document).ready(function() {
+            var ShowGrid = function() {
+                var GridDataSource = new kendo.data.DataSource({
+                    type: "json",
+                    transport: {
+                        read: {
+                            @*url: "@Url.Action("Read", new { Year=$('Year').value,Month = "6"})"+,*@
+                            url: "@Url.Action("Read")" + "?Year=" + $('#Year').val() + "&Month=" + $('#Month').val(),
+                            dataType: "json",
+                            type: "GET",
+                            contentType: "application/json; charset=utf-8",
+                            cache: false
+                        },
+                        //parameterMap: function (options) {
+                        //    return JSON.stringify(options);
+                        //}
+                    },
+                    schema: {
+                        model: {
+                            id: "Id",
+                            fields: {
+                                Id: { type: "number", editable: false },
+                                Date: { type: "string" },
+                                Time: { type: "string" },
+                                FlightNumber: { type: "string" },
+                                CityFrom: { type: "string" },
+                                CityTo: { type: "string" },
+                                Provider: { type: "int" },
+                                TimeTable: { type: "int" },
+                            }
+                        }
+                    },
+                    error: function(e) {
+                        alert(e.errorThrown);
+                    },
+                    pageSize: 10
+                });
+
+                $("#grid").kendoGrid({
+                    dataSource: GridDataSource,
+                    autoBind: true,
+                    selectable: "row",
+                    navigatable: true,
+                    //height: 430,
+                    groupable: true,
+                    scrollable: true,
+                    sortable: true,
+                    filterable: true,
+                    resizable: true,
+                    reorderable: true,
+                    pageable: {
+                        refresh: true,
+                        pageSizes: true,
+                        input: true,
+                        numeric: false
+                    },
+                    toolbar: [
+                        { name: "excel", template: "<a class='k-grid-excel' style='margin-right:3px;float:left' ><span class='btn btn-success'><span class='k-icon k-i-excel'></span> خروجی اکسل </span></a>" },
+                    ],
+                    columns: [
+                        { field: "Id", title: "کد", width: "70px", hidden: true },
+                        { field: "Date", title: "تاریخ" },
+                        { field: "Time", title: "ساعت" },
+                        { field: "CityFrom", title: "مبدا" },
+                        { field: "CityTo", title: "مقصد" },
+                        { field: "Provider", title: "شرکت هواپیمایی" },
+                        { field: "FlightNumber", title: "شماره پرواز" },
+                        { field: "TimeTable", title: "شماره جدول زمانی" },
+                        {
+                            command: [{ name: "Show", click: Show, template: "<a class='k-grid-Show' data-modal=''><span class='btn btn-primary glyphicon glyphicon-user' ></span></a>" }],
+                            title: " ",
+                            width: "50px"
+                        }
+                    ],
+                    excel: {
+                        allPages: true
+                    },
+                });
+
+                function Show(e) {
+                    e.preventDefault();
+                    var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+                    var Address = "@Url.Action("Show", "FlightPassengers")" + "/" + dataItem.TimeTable;
+                    //location.href = Address;
+                    window.open(Address);
+                };
+            };
+            ShowGrid();
+            $("select").on("change", function() {
+                var grid = $("#grid").data("kendoGrid");
+                grid.dataSource.transport.options.read.url = "@Url.Action("Read")" + "?Year=" + $('#Year').val() + "&Month=" + $('#Month').val();
+                grid.dataSource.read();
+            });
+        });
+
+    </script>
+}

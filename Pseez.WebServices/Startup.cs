@@ -1,0 +1,16 @@
+﻿using Microsoft.Owin;
+using Owin;
+using Pseez.WebServices;
+
+[assembly: OwinStartup(typeof (Startup))]
+
+namespace Pseez.WebServices
+{
+    public partial class Startup
+    {
+        public void Configuration(IAppBuilder app)
+        {
+            ConfigureAuth(app);
+        }
+    }
+}

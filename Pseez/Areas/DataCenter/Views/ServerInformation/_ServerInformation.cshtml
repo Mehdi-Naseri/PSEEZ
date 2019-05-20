@@ -1,0 +1,24 @@
+﻿@model List<string[]>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <div class="panel-title">
+            مشخصات سرور @ViewBag.IP
+            <span class="left pull-left" style="cursor:pointer"><span class="glyphicon glyphicon-remove closePanel"></span></span>
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <table class="table table-bordered">
+            @foreach (string[] item in Model)
+            {
+                <tr>
+                    <td>@item[0]</td>
+                    <td>@item[1]</td>
+                    <td>@item[2]</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+

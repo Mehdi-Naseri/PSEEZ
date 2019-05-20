@@ -1,0 +1,6 @@
+@using Pseez.WebServices.Areas.HelpPage.ModelDescriptions
+@model Pseez.WebServices.Areas.HelpPage.ModelDescriptions.CollectionModelDescription
+@if (Model.ElementDescription is ComplexTypeModelDescription)
+{
+    @Html.DisplayFor(m => m.ElementDescription)
+}

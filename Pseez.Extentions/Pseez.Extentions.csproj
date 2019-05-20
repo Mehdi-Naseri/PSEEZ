@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FBBA36A3-2386-40C0-ADFE-460B147AD26E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pseez.Extentions</RootNamespace>
+    <AssemblyName>Pseez.Extentions</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AutoMapper.Net4, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MapperConfigure\AutoMapper\ConfigureMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\Identity\ConfigureUserRoleViewModelMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\PseezEnt\Cmms\ConfigureRepairRequestMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\PseezEnt\Cmms\ConfigureRequestPlanningMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\PseezEnt\Cmms\ConfigureRequestTechnitionMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\PseezEnt\Cmms\ConfigureRequestUserMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\PseezEnt\Common\ConfigureContactGroupContactMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\PseezEnt\Common\ConfigureContactListMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\PseezEnt\Common\ConfigureContactMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\PseezEnt\Common\ConfigureUserContactListMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\PseezEnt\Common\ConfigureUserDefaultContactListMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\PseezEnt\IT\ConfigureBackupMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\PseezEnt\IT\ConfigureServerMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\PseezEnt\Pmbok\ConfigureProjectDocumentFileDeletedMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\PseezEnt\Pmbok\ConfigureProjectDocumentFileMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\PseezEnt\Pmbok\ConfigureProjectDocumentValueMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\PseezEnt\Pmbok\ConfigureProjectMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\PseezEnt\VisitRegistration\ConfigureRegistrationMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\Sts\Basic\ConfigureCityMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\Sts\Basic\ConfigureGenderMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\Sts\Basic\ConfigurePersonMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\Sts\Basic\ConfigureProvinceMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\Sts\Journey\ConfigureProviderMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\Sts\Journey\ConfigureReservationPersonListMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\Sts\Journey\ConfigureTimeTableMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\Sts\Staff\ConfigureBloodTypeMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\Sts\Staff\ConfigureDegreeStateMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\Sts\Staff\ConfigureEmployeeAcademicalResumeMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\Sts\Staff\ConfigureEmployeeFamilialTypeMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\Sts\Staff\ConfigureEmployeeMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\Sts\Staff\ConfigureEmployeeOrganChartMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\Sts\Staff\ConfigureFamilialTypeMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\Sts\Staff\ConfigureOrganChartMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\Sts\Staff\ConfigureReligionMapping.cs" />
+    <Compile Include="MapperConfigure\AutoMapper\Sts\Staff\ConfigureUnitMapping.cs" />
+    <Compile Include="MapperConfigure\Extention\Identity\DefineExtention.cs" />
+    <Compile Include="MapperConfigure\Extention\PseezEnt\DefineExtentionICmms.cs" />
+    <Compile Include="MapperConfigure\Extention\PseezEnt\DefineExtentionPmbok.cs" />
+    <Compile Include="MapperConfigure\Extention\PseezEnt\DefineExtentionIT.cs" />
+    <Compile Include="MapperConfigure\Extention\PseezEnt\DefineExtentionVisitRegistration.cs" />
+    <Compile Include="MapperConfigure\Extention\PseezEnt\DefineExtentionCommon.cs" />
+    <Compile Include="MapperConfigure\Extention\Sts\DefineExtention.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Identity.ViewModels\Identity.ViewModels.csproj">
+      <Project>{3752be57-d288-4a79-a6b2-31aaefcad35b}</Project>
+      <Name>Identity.ViewModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pseez.DomainClasses\Pseez.DomainClasses.csproj">
+      <Project>{92a6e8d6-4067-4cc4-a5ef-a1b142b8dc96}</Project>
+      <Name>Pseez.DomainClasses</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pseez.ViewModels\Pseez.ViewModels.csproj">
+      <Project>{cf0583f2-70d2-4286-8149-5387cf9acb17}</Project>
+      <Name>Pseez.ViewModels</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

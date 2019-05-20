@@ -1,0 +1,545 @@
+﻿@model Pseez.ViewModels.ViewModels.PseezEnt.Pmbok.ProjectDocumentLatestValueFilesViewModel
+@{
+    ViewBag.Title = "Project Management Plan";
+}
+
+<div id="documentsIndexPage">
+    <div class="panel-group meh-panel-shadow" role="tablist" aria-multiselectable="true">
+        <div class="row">
+            <h3 class="alert alert-success col-md-5 meh-shadow" style="margin-left: 20px;">Project Management Plan</h3>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="heading1">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                        Change management plan
+                    </a>
+                </h4>
+            </div>
+
+            <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
+                <div class="panel-body">
+                    <div class="meh-documentGroup">
+                        <div class="form-group">
+                            @Html.TextAreaFor(model => model.ChangeManagementPlan)
+                        </div>
+                        <div class="form-group meh-kendouiUpload">
+                            @foreach (var file in Model.ChangeManagementPlanFiles)
+                            {
+                                <div class="meh-documentFile">
+                                    @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="heading2">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                        Communications management plan
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+                <div class="panel-body">
+                    <div class="meh-documentGroup">
+                        <div class="form-group">
+                            @*@Html.TextArea("CommunicationsManagementPlan")*@
+                            @Html.TextAreaFor(model => model.CommunicationsManagementPlan)
+                        </div>
+                        <div class="form-group meh-kendouiUpload">
+                            @foreach (var file in Model.CommunicationsManagementPlanFiles)
+                            {
+                                <div class="meh-documentFile">
+                                    @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="heading3">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                        Configuration management plan
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+                <div class="panel-body">
+                    <div class="meh-documentGroup">
+                        <div class="form-group">
+                            @*@Html.TextArea("ConfigurationManagementPlan")*@
+                            @Html.TextAreaFor(model => model.ConfigurationManagementPlan)
+                        </div>
+                        <div class="form-group meh-kendouiUpload">
+                            @foreach (var file in Model.ConfigurationManagementPlanFiles)
+                            {
+                                <div class="meh-documentFile">
+                                    @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="heading4">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                        Cost baseline
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+                <div class="panel-body">
+                    <div class="meh-documentGroup">
+                        <div class="form-group">
+                            @*@Html.TextArea("CostBaseline")*@
+                            @Html.TextAreaFor(model => model.CostBaseline)
+                        </div>
+                        <div class="form-group meh-kendouiUpload">
+                            @foreach (var file in Model.CostBaselineFiles)
+                            {
+                                <div class="meh-documentFile">
+                                    @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="heading5">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                        Cost management plan
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="meh-documentGroup">
+                            @*@Html.TextArea("CostManagementPlan")*@
+                            @Html.TextAreaFor(model => model.CostManagementPlan)
+                        </div>
+                        <div class="form-group meh-kendouiUpload">
+                            @foreach (var file in Model.CostManagementPlanFiles)
+                            {
+                                <div class="meh-documentFile">
+                                    @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="heading6">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                        Human resource management plan
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
+                <div class="panel-body">
+                    <div class="meh-documentGroup">
+                        <div class="form-group">
+                            @*@Html.TextArea("HumanResourceManagementPlan")*@
+                            @Html.TextAreaFor(model => model.HumanResourceManagementPlan)
+                        </div>
+                        <div class="form-group meh-kendouiUpload">
+                            @foreach (var file in Model.HumanResourceManagementPlanFiles)
+                            {
+                                <div class="meh-documentFile">
+                                    @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="heading7">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                        Process improvement plan
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading7">
+                <div class="panel-body">
+                    <div class="meh-documentGroup">
+                        <div class="form-group">
+                            @*@Html.TextArea("ProcessImprovementPlan")*@
+                            @Html.TextAreaFor(model => model.ProcessImprovementPlan)
+                        </div>
+                        <div class="form-group meh-kendouiUpload">
+                            @foreach (var file in Model.ProcessImprovementPlanFiles)
+                            {
+                                <div class="meh-documentFile">
+                                    @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="heading8">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="false" aria-controls="collapse8">
+                        Procurement management plan
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading8">
+                <div class="panel-body">
+                    <div class="meh-documentGroup">
+                        <div class="form-group">
+                            @*@Html.TextArea("ProcurementManagementPlan")*@
+                            @Html.TextAreaFor(model => model.ProcurementManagementPlan)
+                        </div>
+                        <div class="form-group meh-kendouiUpload">
+                            @foreach (var file in Model.ProcurementManagementPlanFiles)
+                            {
+                                <div class="meh-documentFile">
+                                    @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="heading9">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse9" aria-expanded="false" aria-controls="collapse9">
+                        Scope baseline
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading9">
+                <div class="panel-body">
+                    <div class="meh-documentGroup">
+                        <div class="form-group">
+                            @Html.Label("Project scope statement")
+                            @*@Html.TextArea("ProjectScopeStatement")*@
+                            @Html.TextAreaFor(model => model.ProjectScopeStatement)
+                        </div>
+                        <div class="form-group meh-kendouiUpload">
+                            @foreach (var file in Model.ProjectScopeStatementFiles)
+                            {
+                                <div class="meh-documentFile">
+                                    @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="meh-documentGroup">
+                        <div class="form-group">
+                            @Html.Label("WBS")
+                            @*@Html.TextArea("WBS")*@
+                            @Html.TextAreaFor(model => model.WBS)
+                        </div>
+                        <div class="form-group meh-kendouiUpload">
+                            @foreach (var file in Model.WBSFiles)
+                            {
+                                <div class="meh-documentFile">
+                                    @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="meh-documentGroup">
+                        <div class="form-group">
+                            @Html.Label("WBS dictionary")
+                            @*@Html.TextArea("WBSDictionary")*@
+                            @Html.TextAreaFor(model => model.WBSDictionary)
+                        </div>
+                        <div class="form-group meh-kendouiUpload">
+                            @foreach (var file in Model.WBSDictionaryFiles)
+                            {
+                                <div class="meh-documentFile">
+                                    @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="heading10">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse10" aria-expanded="false" aria-controls="collapse10">
+                        Quality management plan
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse10" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading10">
+                <div class="panel-body">
+                    <div class="meh-documentGroup">
+                        <div class="form-group">
+                            @*@Html.TextArea("QualityManagementPlan")*@
+                            @Html.TextAreaFor(model => model.QualityManagementPlan)
+                        </div>
+                        <div class="form-group meh-kendouiUpload">
+                            @foreach (var file in Model.QualityManagementPlanFiles)
+                            {
+                                <div class="meh-documentFile">
+                                    @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="heading11">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse11" aria-expanded="false" aria-controls="collapse11">
+                        Requirements management plan
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse11" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading11">
+                <div class="panel-body">
+                    <div class="meh-documentGroup">
+                        <div class="form-group">
+                            @*@Html.TextArea("RequirementsManagementPlan")*@
+                            @Html.TextAreaFor(model => model.RequirementsManagementPlan)
+                        </div>
+                        <div class="form-group meh-kendouiUpload">
+                            @foreach (var file in Model.RequirementsManagementPlanFiles)
+                            {
+                                <div class="meh-documentFile">
+                                    @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="heading12">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse12" aria-expanded="false" aria-controls="collapse12">
+                        Risk management plan
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse12" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading12">
+                <div class="panel-body">
+                    <div class="meh-documentGroup">
+                        <div class="form-group">
+                            @*@Html.TextArea("RiskManagementPlan")*@
+                            @Html.TextAreaFor(model => model.RiskManagementPlan)
+                        </div>
+                        <div class="form-group meh-kendouiUpload">
+                            @foreach (var file in Model.RiskManagementPlanFiles)
+                            {
+                                <div class="meh-documentFile">
+                                    @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="heading13">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse13" aria-expanded="false" aria-controls="collapse13">
+                        Schedule baseline
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse13" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading13">
+                <div class="panel-body">
+                    <div class="meh-documentGroup">
+                        <div class="form-group">
+                            @*@Html.TextArea("ScheduleBaseline")*@
+                            @Html.TextAreaFor(model => model.ScheduleBaseline)
+                        </div>
+                        <div class="form-group meh-kendouiUpload">
+                            @foreach (var file in Model.ScheduleBaselineFiles)
+                            {
+                                <div class="meh-documentFile">
+                                    @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="heading14">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse14" aria-expanded="false" aria-controls="collapse14">
+                        Schedule Management Plan
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse14" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading14">
+                <div class="panel-body">
+                    <div class="meh-documentGroup">
+                        <div class="form-group">
+                            @*@Html.TextArea("ScheduleBaseline")*@
+                            @Html.TextAreaFor(model => model.ScheduleManagementPlan)
+                        </div>
+                        <div class="form-group meh-kendouiUpload">
+                            @foreach (var file in Model.ScheduleManagementPlanFiles)
+                            {
+                                <div class="meh-documentFile">
+                                    @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="heading15">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse15" aria-expanded="false" aria-controls="collapse15">
+                        Scope Management Plan
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse15" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading15">
+                <div class="panel-body">
+                    <div class="meh-documentGroup">
+                        <div class="form-group">
+                            @*@Html.TextArea("ScheduleBaseline")*@
+                            @Html.TextAreaFor(model => model.ScopeManagementPlan)
+                        </div>
+                        <div class="form-group meh-kendouiUpload">
+                            @foreach (var file in Model.ScopeManagementPlanFiles)
+                            {
+                                <div class="meh-documentFile">
+                                    @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="heading16">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse16" aria-expanded="false" aria-controls="collapse16">
+                        Stakeholder Management Plan
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse16" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading16">
+                <div class="panel-body">
+                    <div class="meh-documentGroup">
+                        <div class="form-group">
+                            @*@Html.TextArea("ScheduleBaseline")*@
+                            @Html.TextAreaFor(model => model.StakeholderManagementPlan)
+                        </div>
+                        <div class="form-group meh-kendouiUpload">
+                            @foreach (var file in Model.StakeholderManagementPlanFiles)
+                            {
+                                <div class="meh-documentFile">
+                                    @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+    &nbsp;
+
+    @*--------------Enable/Disable Edit------------------------*@
+    <div class="row">
+        <div class="alert alert-info col-md-3 meh-shadow">
+            Edit:
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-info active">
+                    <input type="radio" name="EditMode" id="DisableEdit" value="Disable" checked />Disable
+                </label>
+                <label class="btn btn-info ">
+                    <input type="radio" name="EditMode" id="EnableEdit" value="Enable" />Enable
+                </label>
+            </div>
+        </div>
+
+        @*--------------Enable/Disable Edit------------------------*@
+
+        <div class="alert alert-info col-md-offset-1 col-md-3 meh-shadow">
+            History:
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-info active">
+                    <input type="radio" name="HistoryMode" id="DisableHistory" value="Disable" checked />Disable
+                </label>
+                <label class="btn btn-info ">
+                    <input type="radio" name="HistoryMode" id="EnableHistory" value="Enable" />Enable
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@*--------------Modal------------------------*@
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title ">Result</h4>
+            </div>
+            <div class="modal-body">
+                <p id="modalBodyContent"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+@section scripts{
+    <script>
+        //آماده سازی اولیه
+        $(function () {
+            $("textarea").attr("disabled", "disabled");
+            $(".meh-ToggleHidden").attr("hidden", "hidden");
+        });
+    </script>
+}

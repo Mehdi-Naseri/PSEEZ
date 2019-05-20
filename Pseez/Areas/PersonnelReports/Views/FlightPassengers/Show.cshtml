@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "مسافران";
+}
+
+<h2>لیست مسافران</h2>
+
+
+<div class="k-rtl">
+    <div id="grid"></div>
+</div>
+
+
+
+@section Styles{
+    <link href="~/Content/kendo/2015.1.318/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/2015.1.318/kendo.blueopal.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/2015.1.318/kendo.rtl.min.css" rel="stylesheet" />
+}
+@section Scripts{
+    <script src="~/Scripts/jszip/jszip.min-2.5.0.js"></script>
+    <script src="~/Scripts/kendo/2015.1.318_Complete/kendo.all.min.js"></script>
+    <script src="~/Scripts/kendo/KendoFarsi/kendo.fa-IR.js"></script>
+
+    <script>
+
+    </script>
+    <script>
+        kendo.culture("fa-IR");
+    </script>
+    <script>
+        $(document).ready(function () {
+            var ShowGrid = function () {
+                var GridDataSource = new kendo.data.DataSource({
+                    type: "json",
+                    transport: {
+                        read: {
+                            url: "@Url.Action("Read")" + "?TimeTable=" + "@ViewBag.TimeTable",
+                            dataType: "json",
+                            type: "GET",
+                            contentType: "application/json; charset=utf-8",
+                            cache: false
+                        },
+                        //parameterMap: function (options) {
+                        //    return JSON.stringify(options);
+                        //}
+                    },
+                    schema: {
+                        model: {
+                            id: "Id",
+                            fields: {
+                                Name: { type: "string" },
+                                Family: { type: "string" }
+                            }
+                        }
+                    },
+                    error: function (e) {
+                        alert(e.errorThrown);
+                    },
+                    pageSize: 10
+                });
+
+                $("#grid").kendoGrid({
+                    dataSource: GridDataSource,
+                    autoBind: true,
+                    selectable: "row",
+                    navigatable: true,
+                    //height: 430,
+                    groupable: true,
+                    scrollable: false,
+                    sortable: true,
+                    filterable: true,
+                    resizable: true,
+                    reorderable: true,
+                    pageable: {
+                        refresh: true,
+                        pageSizes: true,
+                        input: true,
+                        numeric: false
+                    },
+                    toolbar: [
+                          { name: "excel", template: "<a class='k-grid-excel' style='margin-right:3px;float:left' ><span class='btn btn-success'><span class='k-icon k-i-excel'></span> خروجی اکسل </span></a>" },
+                    ],
+                    columns: [
+                        { field: "Name", title: "نام" },
+                        { field: "Family", title: "نام خانوادگی" }
+                    ],
+                    excel: {
+                        allPages: true
+                    },
+                });
+            };
+            ShowGrid();
+        });
+
+    </script>
+}
+
+

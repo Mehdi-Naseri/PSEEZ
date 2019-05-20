@@ -1,0 +1,36 @@
+﻿@model Pseez.DomainClasses.Models.PseezEnt.Common.Log
+
+@{
+    ViewBag.Title = "ایجاد";
+}
+
+<h2>ایجاد</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>لاگ</h4>
+        <hr/>
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Message, new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Message, 10, 30, new {@class = "form-control", style = "max-width:1200px;width:300px;"})
+                @Html.ValidationMessageFor(model => model.Message)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="ثبت" class="btn btn-primary"/>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("بازگشت به لیست", "Index")
+</div>

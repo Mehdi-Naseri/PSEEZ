@@ -1,0 +1,94 @@
+﻿@using Microsoft.AspNet.Identity.EntityFramework;
+@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityUserRole>
+
+@{
+    ViewBag.Title = "گروههای کاربران";
+}
+
+<h2>گروههای کاربران</h2>
+
+<p>
+    @Html.ActionLink("اضافه کردن کاربر به گروه", "AddUserInRole", null, new { @class = "btn btn-primary", data_modal = "" })
+</p>
+
+<div class="row">
+    <table class="table table-bordered table-hover table-responsive col-md-6">
+        <tr>
+            <th>
+                گروه
+            </th>
+            <th>
+                کاربر
+            </th>
+            <th style="width:110px"></th>
+        </tr>
+
+        @foreach (IdentityUserRole IdentityUserRole1 in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => IdentityUserRole1.Role.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => IdentityUserRole1.User.UserName)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "DeleteUserInRole", new { UserName = IdentityUserRole1.User.UserName, RoleName = IdentityUserRole1.Role.Name }, new { @class = "btn btn-danger glyphicon glyphicon-trash", data_modal = "" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+@*--------------------------------------------
+    ---------------- Modal  ---------------------
+    --------------------------------------------*@
+
+<div id='myModal' class='modal fade in'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'></div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script>
+        $(function () {
+            $.ajaxSetup({ cache: false });
+            $("a[data-modal]").on("click", function (e) {
+                $('#myModalContent').load(this.href, function () {
+                    $('#myModal').modal({
+                        keyboard: true
+                    }, 'show');
+                    bindForm(this);
+                });
+                return false;
+            });
+        });
+
+        function bindForm(dialog) {
+            $('form', dialog).submit(function () {
+                $('#progress').show();
+                $.ajax({
+                    url: this.action,
+                    type: this.method,
+                    data: $(this).serialize(),
+                    success: function (result) {
+                        if (result.success) {
+                            $('#myModal').modal('hide');
+                            $('#progress').hide();
+                            location.reload();
+                        } else {
+                            $('#progress').hide();
+                            $('#myModalContent').html(result);
+                            bindForm();
+                        }
+                    }
+                });
+                return false;
+            });
+        }
+    </script>
+}

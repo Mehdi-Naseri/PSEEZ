@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - PMBOK</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/kendo/2015.1.318/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/2015.1.318/kendo.default.min.css" rel="stylesheet" />
+    @*جهت اضافه کردن استایلهاي جدید اضافه شده اند.*@
+    @RenderSection("styles", required: false)
+    @*اضافه کردن logo*@
+    <link rel="shortcut icon" href="~/Content/Meh/PmpIcons/images.ico" />
+    <link href="~/Content/Meh/Meh.css" rel="stylesheet" />
+</head>
+<body>
+    <section id="menu">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="row">
+                <div class="navbar navbar-inverse navbar-fixed-top" id="firstNavbar" style="z-index: 2">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+                            <a class="navbar-brand" style="padding: 2px" href="@Url.Action("Index", "Home", new {area = ""})"><img src="~/Content/Meh/PmpIcons/Icon.175x175-75.png" height="45" /></a>
+                        </div>
+
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li>@Html.ActionLink("Projects", "Index", "Projects", new { area = "Projects" }, null)</li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documents<span class="caret"></span> </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>@Html.ActionLink("Project Management Plans", "Index", "ProjectManagementPlans", new { area = "Documents" }, null)</li>
+                                        <li>@Html.ActionLink("Project Documents", "Index", "ProjectDocuments", new { area = "Documents" }, null)</li>
+                                        <li class="nav-divider"></li>
+                                        <li>@Html.ActionLink("External Documents", "Index", "ExternalDocuments", new { area = "Documents" }, null)</li>
+                                    </ul>
+                                </li>
+                                <li>@Html.ActionLink("Learning", "Index", "Learning", new { area = "Learning" }, null)</li>
+                                @if (User.IsInRole("AdminPmbok") || User.IsInRole("AdminEnt"))
+                                {
+                                    <li class="dropdown">
+                                        <a href=@Url.Action("index", "Admin", new {area = "Admin"}) class="dropdown-toggle" data-toggle="dropdown">Admin<span class="caret"></span> </a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>@Html.ActionLink("Users", "AllUsers", "Identity", new { area = "Admin" }, null)</li>
+                                            <li>@Html.ActionLink("Roles", "AllRoles", "Identity", new { area = "Admin" }, null)</li>
+                                            <li>@Html.ActionLink("Users in Roles", "AllUsersRoles", "Identity", new { area = "Admin" }, null)</li>
+                                            @*<li class="nav-divider"></li>*@
+                                            @*<li>@Html.ActionLink("Logs", "Index", "Logs", new { area = "Admin" }, null)</li>*@
+                                        </ul>
+                                    </li>
+                                }
+                            </ul>
+
+                            @Html.Partial("_LoginPartial")
+
+                            <div class="nav navbar-nav navbar-right" style="margin-right: 10px; margin-top: 10px">
+
+                                @*@Html.DropDownList("DropDown", new SelectList(""), "Projects", new { @class = "form-control", style = "background-color:lightgray;height: 30px;" })*@
+
+                                @*@{List<SelectListItem> ProjectNames = new List<SelectListItem>(){
+                                      new SelectListItem() {Text="TEST1", Value = "Test1" },
+                                      new SelectListItem() {Text="TEST2", Value = "Test2" }
+                                          };
+                                    }*@
+
+                                <input type="text" id="DefaultProjectName" class="form-control disabled" value="" readonly disabled="disabled" style="background-color: lightgray; height: 30px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="navbar navbar-inverse navbar-fixed-top" style="z-index: 1" id="secondNavbar">
+                    @*<div class="navbar navbar-inverse" id="SecondNavbar">*@
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Integration<span class="caret"></span> </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>@Html.ActionLink("Develop Project Charter", "Index", "DevelopProjectCharter", new { area = "ProjectIntegrationManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Develop Project Management Plan", "Index", "DevelopProjectManagementPlan", new { area = "ProjectIntegrationManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Direct and Manage Project Work", "Index", "DirectandManageProjectWork", new { area = "ProjectIntegrationManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Monitor and Control Project Work", "Index", "MonitorandControlProjectWork", new { area = "ProjectIntegrationManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Perform Integrated Change Control", "Index", "PerformIntegratedChangeControl", new { area = "ProjectIntegrationManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Close Projector Phase", "Index", "CloseProjectorPhase", new { area = "ProjectIntegrationManagement" }, null)</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Scope<span class="caret"></span> </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>@Html.ActionLink("Plan Scope Management", "Index", "PlanScopeManagement", new { area = "ProjectScopeManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Collect Requirements", "Index", "CollectRequirements", new { area = "ProjectScopeManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Define Scope", "Index", "DefineScope", new { area = "ProjectScopeManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Create WBS", "Index", "CreateWBS", new { area = "ProjectScopeManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Validate Scope", "Index", "ValidateScope", new { area = "ProjectScopeManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Control Scope", "Index", "ControlScope", new { area = "ProjectScopeManagement" }, null)</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Time<span class="caret"></span> </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>@Html.ActionLink("Plan Schedule Management", "Index", "PlanScheduleManagement", new { area = "ProjectTimeManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Define Activities", "Index", "DefineActivities", new { area = "ProjectTimeManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Sequence Activities", "Index", "SequenceActivities", new { area = "ProjectTimeManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Estimate Activity Resources", "Index", "EstimateActivityResources", new { area = "ProjectTimeManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Estimate Activity Durations", "Index", "EstimateActivityDurations", new { area = "ProjectTimeManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Develop Schedule", "Index", "DevelopSchedule", new { area = "ProjectTimeManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Control Schedule", "Index", "ControlSchedule", new { area = "ProjectTimeManagement" }, null)</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cost<span class="caret"></span> </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>@Html.ActionLink("Plan Cost Management", "Index", "PlanCostManagement", new { area = "ProjectCostManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Estimate Costs", "Index", "EstimateCosts", new { area = "ProjectCostManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Determine Budget", "Index", "DetermineBudget", new { area = "ProjectCostManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Control Costs", "Index", "ControlCosts", new { area = "ProjectCostManagement" }, null)</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quality<span class="caret"></span> </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>@Html.ActionLink("Plan Quality Management", "Index", "PlanQualityManagement", new { area = "ProjectQualityManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Perform Quality Assurance", "Index", "PerformQualityAssurance", new { area = "ProjectQualityManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Control Quality", "Index", "ControlQuality", new { area = "ProjectQualityManagement" }, null)</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Human Resource<span class="caret"></span> </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>@Html.ActionLink("Plan Human Resource Management", "Index", "PlanHumanResourceManagement", new { area = "ProjectHumanResourceManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Acquire Project Team", "Index", "AcquireProjectTeam", new { area = "ProjectHumanResourceManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Develop Project Team", "Index", "DevelopProjectTeam", new { area = "ProjectHumanResourceManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Manage Project Team", "Index", "ManageProjectTeam", new { area = "ProjectHumanResourceManagement" }, null)</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Communications<span class="caret"></span> </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>@Html.ActionLink("Plan Communications Management", "Index", "PlanCommunicationsManagement", new { area = "ProjectCommunicationsManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Manage Communications", "Index", "ManageCommunications", new { area = "ProjectCommunicationsManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Control Communications", "Index", "ControlCommunications", new { area = "ProjectCommunicationsManagement" }, null)</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Risk<span class="caret"></span> </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>@Html.ActionLink("Plan Risk Management", "Index", "PlanRiskManagement", new { area = "ProjectRiskManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Identify Risks", "Index", "IdentifyRisks", new { area = "ProjectRiskManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Perform Qualitative Risk Analysis", "Index", "PerformQualitativeRiskAnalysis", new { area = "ProjectRiskManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Perform Quantitative Risk Analysis", "Index", "PerformQuantitativeRiskAnalysis", new { area = "ProjectRiskManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Plan Risk Responses", "Index", "PlanRiskResponses", new { area = "ProjectRiskManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Control Risks", "Index", "ControlRisks", new { area = "ProjectRiskManagement" }, null)</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Procurement<span class="caret"></span> </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>@Html.ActionLink("Plan Procurement Management", "Index", "PlanProcurementManagement", new { area = "ProjectProcurementManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Conduct Procurements", "Index", "ConductProcurements", new { area = "ProjectProcurementManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Control Procurements", "Index", "ControlProcurements", new { area = "ProjectProcurementManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Close Procurements", "Index", "CloseProcurements", new { area = "ProjectProcurementManagement" }, null)</li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Stakeholder<span class="caret"></span> </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>@Html.ActionLink("Identify Stakeholders", "Index", "IdentifyStakeholders", new { area = "ProjectStakeholderManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Plan Stakeholder Management", "Index", "PlanStakeholderManagement", new { area = "ProjectStakeholderManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Manage Stakeholder Engagement", "Index", "ManageStakeholderEngagement", new { area = "ProjectStakeholderManagement" }, null)</li>
+                                        <li>@Html.ActionLink("Control Stakeholder Engagement", "Index", "ControlStakeholderEngagement", new { area = "ProjectStakeholderManagement" }, null)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </section>
+
+    <img id="bodyBackgroundIamge" src="~/Content/Meh/Images/slide-1.jpg" />
+
+    <div class="container body-content" @*style="margin-top: 60px;"*@>
+        @RenderBody()
+        <hr />
+        <footer>
+            <p class="text-center">&copy; @DateTime.Now.Year - PMP</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/kendo/2015.1.318_Complete/kendo.all.min.js"></script>
+    @RenderSection("scripts", required: false)
+    <script>
+        var saveDocumentValueUrl = '@Url.Action("SaveDocumentValue")';
+        var uploadDocumentFileUrl = '@Url.Action("UploadDocumentFile")';
+        var deleteDocumentFileUrl = '@Url.Action("DeleteDocumentFile")';
+        var getChangedValuesUrl = '@Url.Action("GetChangedValues")';
+        var getDeletedFilesUrl = '@Url.Action("GetDeletedFiles")';
+    </script>
+    <script src="~/Scripts/Meh/MehJavaScript.js"></script>
+</body>
+</html>

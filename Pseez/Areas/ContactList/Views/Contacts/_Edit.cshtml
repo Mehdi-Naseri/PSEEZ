@@ -1,0 +1,75 @@
+﻿@model Pseez.Model.ViewModels.PseezEnt.Contact.ContactViewModel
+
+<div class="modal-header alert-info">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+    <span class="glyphicon glyphicon-remove"></span>
+</button>
+    <h3 class="modal-title">ویرایش شماره تماس</h3>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="modal-body">
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true)
+
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Name, new { @class = "control-label col-sm-3" })
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                    <div>
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Tell, new { @class = "control-label col-sm-3" })
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(m => m.Tell, new { @class = "form-control col-sm-6", dir = "ltr" })
+                    <div>
+                        @Html.ValidationMessageFor(m => m.Tell)
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Comment, new { @class = "control-label col-sm-3" })
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(m => m.Comment, new { @class = "form-control" })
+                    <div>
+                        @Html.ValidationMessageFor(m => m.Comment)
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ContactListName, new { @class = "control-label col-sm-3" })
+                <div class="col-sm-9">
+                    @Html.DropDownListFor(model => model.ContactListName, ViewBag.ContactListNames as SelectList, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ContactListName)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ContactGroupName, new { @class = "control-label col-sm-3" })
+                <div class="col-sm-9">
+                    <select class="form-control" id="ContactGroupName" name="ContactGroupName">
+                        @Html.Raw(ViewBag.ContactGroupNames)
+                    </select>
+                    @Html.ValidationMessageFor(model => model.ContactGroupName)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <span id="progress" class="text-center" style="display: none;">
+            <img src="~/Content/Meh/Images/wait.gif" alt="wait" />
+            در حال ارسال ...
+        </span>
+
+        <input class="btn btn-primary" type="submit" value="ذخیره" />
+        <button class="btn btn-warning" data-dismiss="modal">بستن</button>
+    </div>
+}
+
+

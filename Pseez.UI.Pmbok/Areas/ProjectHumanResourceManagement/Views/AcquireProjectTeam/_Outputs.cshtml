@@ -1,0 +1,75 @@
+﻿@*<div>.1 Project staff assignments</div>
+<div>.2 Resource calendars</div>
+<div>.3 Project management plan updates</div>*@
+
+@model Pseez.ViewModels.ViewModels.PseezEnt.Pmbok.ProjectDocumentLatestValueFilesViewModel
+<div class="panel-group" @*id="accordion"*@ role="tablist" aria-multiselectable="true">
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="heading-o1">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-o1">
+                    1. Project staff assignments
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-o1" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+                <div class="meh-documentGroup">
+                    <div class="form-group">
+                        @Html.TextAreaFor(model => model.ProjectStaffAssignments)
+                    </div>
+                    <div class="form-group meh-kendouiUpload">
+                        @foreach (var file in Model.ProjectStaffAssignmentsFiles)
+                        {
+                            <div class="meh-documentFile">
+                                @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="heading-o2">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-o2">
+                    2. Resource calendars
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-o2" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+                <div class="meh-documentGroup">
+                    <div class="form-group">
+                        @Html.TextAreaFor(model => model.ResourceCalendars)
+                    </div>
+                    <div class="form-group meh-kendouiUpload">
+                        @foreach (var file in Model.ResourceCalendarsFiles)
+                        {
+                            <div class="meh-documentFile">
+                                @Html.ActionLink(file.FileName, "DownloadDocumentFile", new { id = file.Id }, new { @class = "meh-downloadLink" })
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="heading-o3">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-o3">
+                    3. Project management plan updates
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-o3" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+                @Html.ActionLink("Project Management Plans", "Index", "ProjectManagementPlans", new { area = "Documents" }, null)
+            </div>
+        </div>
+    </div>
+ </div>

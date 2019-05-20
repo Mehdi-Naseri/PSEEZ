@@ -1,0 +1,51 @@
+﻿@model Pseez.ViewModels.ViewModels.PseezEnt.Pmbok.ProjectDocumentLatestValueFilesViewModel
+@{
+    ViewBag.Title = "Perform Quantitative Risk Analysis";
+}
+
+<div id="processIndexPage">
+    <h2 style="margin-bottom: 20px;">
+        <span class="alert alert-success meh-shadow">
+            Perform Quantitative Risk Analysis
+            <span data-toggle="popover" title="Tools & Techniques" data-html="true" data-content="@Html.Raw(Html.Partial("_Tools"))">
+                <span class="glyphicon glyphicon-info-sign">
+                </span>
+            </span>
+        </span>
+
+    </h2>
+
+    <div class="well">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation"><a href="#tab-inputs" role="tab" data-toggle="tab">Inputs</a></li>
+            <li role="presentation" class="active"><a href="#tab-outputs" role="tab" data-toggle="tab">Outputs</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div id="tab-inputs" role="tabpanel" class="tab-pane fade">@Html.Partial("_Inputs", Model)</div>
+            <div id="tab-outputs" role="tabpanel" class="tab-pane fade in active">@Html.Partial("_Outputs", Model)</div>
+        </div>
+    </div>
+</div>
+
+@*--------------Modal - Result------------------------*@
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title ">Result</h4>
+            </div>
+            <div class="modal-body">
+                <p id="modalBodyContent"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+@Html.Hidden("SaveUrl", Url.Action("SaveDocumentValue"))
